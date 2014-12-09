@@ -1,0 +1,34 @@
+
+# PYTHONPATH must include directory above plugin directory.
+#     Define either externally or here, then import plugin.
+sys.path.insert(0, './..')
+import cis
+
+molecule {
+0 1
+O 0.000   -0.1432258    0.00
+H 1.638036  1.1365488   0.00
+H -1.6380368 1.136548822547  0.000
+units bohr
+symmetry c1
+}
+
+set {
+  basis DZ
+  freeze_core false
+  scf_type pk
+  D_CONVERGENCE 1.0e-14
+  E_CONVERGENCE 1.0e-14
+}
+
+set cis {
+  print 1
+}
+
+energy('scf')
+energy('cis')
+
+
+
+cis.exampleFN()
+
