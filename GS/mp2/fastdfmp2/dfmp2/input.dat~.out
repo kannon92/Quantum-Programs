@@ -1,0 +1,57 @@
+    -----------------------------------------------------------------------
+          PSI4: An Open-Source Ab Initio Electronic Structure Package
+                              PSI 4.0 Driver
+
+               Git: Rev {master} 
+
+    J. M. Turney, A. C. Simmonett, R. M. Parrish, E. G. Hohenstein,
+    F. A. Evangelista, J. T. Fermann, B. J. Mintz, L. A. Burns, J. J. Wilke,
+    M. L. Abrams, N. J. Russ, M. L. Leininger, C. L. Janssen, E. T. Seidl,
+    W. D. Allen, H. F. Schaefer, R. A. King, E. F. Valeev, C. D. Sherrill,
+    and T. D. Crawford, WIREs Comput. Mol. Sci. 2, 556-565 (2012)
+    (doi: 10.1002/wcms.93)
+
+                         Additional Contributions by
+    A. E. DePrince, M. Saitow, U. Bozkaya, A. Yu. Sokolov
+    -----------------------------------------------------------------------
+
+    Process ID:   1237
+    PSI4DATADIR: /Users/kevinhannon/Programs/psi4private/lib
+    Memory level set to 256.000 MB
+
+  ==> Input File <==
+
+--------------------------------------------------------------------------
+
+# PYTHONPATH must include directory above plugin directory.
+#     Define either externally or here, then import plugin.
+sys.path.insert(0, './..')
+import fastdfmp2
+
+molecule {
+F 0.00   0.000    1.200
+F 0.00   0.000    0.000
+symmetry c1
+}
+
+set {
+  basis cc-pvdz
+  df_basis_mp2 cc-pvdz-ri
+  freeze_core false
+  memory 1gb
+}
+
+set dfmp2 {
+  print 1
+}
+energy('scf')
+energy('mp2')
+energy('dfmp2')
+
+dfmp2.exampleFN()
+
+--------------------------------------------------------------------------
+
+*** tstart() called on Kevins-MacBook-Pro.local
+*** at Tue Dec 30 10:32:04 2014
+
