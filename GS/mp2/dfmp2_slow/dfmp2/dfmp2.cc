@@ -201,12 +201,12 @@ PsiReturnType dfmp2(Options &options)
           }
        }
     }
-    QiaM->print();
+    //QiaM->print();
          
     //outfile->Printf("Qia_sm[1][1][1] = %20.12f \ n Qia_bm[1][1][1] = %20.12f", QiaM->get(1,1*navir + 1), Qia[1][1][1]);
-    QiaM->zero();
-    QiaM->gemm('T','N', 1.0, AiaM,Jm12,0.0);
-    QiaM->print();
+    //QiaM->zero();
+    //QiaM->gemm('T','N', 1.0, AiaM,Jm12,0.0);
+    //QiaM->print();
     
     fourth tei(boost::extents[naocc][navir][naocc][navir]);
    
@@ -221,47 +221,27 @@ PsiReturnType dfmp2(Options &options)
            }
         }
      }
-   
-    
- 
-    
-    SharedVector eps_avir = wfn->epsilon_a_subset("AO", "ACTIVE_VIR"); 
-    SharedVector eps_aocc = wfn->epsilon_a_subset("AO", "ACTIVE_OCC"); 
+     double MP2_energy = 0.0; 
+     SharedVector eps_avir = wfn->epsilon_a_subset("AO", "ACTIVE_VIR"); 
+     SharedVector eps_aocc = wfn->epsilon_a_subset("AO", "ACTIVE_OCC"); 
+     for(int i = 0; i < naocc; i++){
+        for(int j = 0; j < naocc; j++){
+           for(int a = 0; a < navir; a++){
+              for(int b = 0; b < navir; b++){
+                 double denom = 1.0/(eps_aocc->get(i) + eps_aocc->get(j) - eps_avir->get(a) - eps_avir->get(b));
+                 MP2_energy+= 2.0*tei[i][a][j][b]*tei[i][a][j][b]*denom - tei[i][a][j][b]*tei[i][b][j][a]*denom;
               
-  
+              }
+           }
+         }
+     }
+    outfile->Printf("\nMP2_energy = %20.12f", MP2_energy);    
 
-
-      /*    for(int ijrel = 0; ijrel < naocc*naocc; ijrel++){
-             
-             int irel = ijrel / na(cc;
-             int jrel = ijrel % naocc;
- 
-             int i = irel + i;
-             int j = jrel + j;
-
-             if(j > i) continue;
-  
-             double perm = (i ==j ? 1.0 : 2.0);
-             C_DGEMM('N','T', navir, navir, naux, 1.0, Bia->pointer()[irel], naux, Bjb->pointer()[jrel], naux, 0.0,Iab->pointer()[0], navir);
-
-             for(int a = 0; a < navir; a++){
-                for(int b = 0; b < navir; b++){
-                    double iajb = Iab->get(a,b);
-                    double ibja = Iab->get(b,a);
-
-                   double D = perm / (eps_aocc->get(i) + eps_aocc->get(j) - eps_avir->get(a) - eps_avir->get(b));
-                   robplmp2+=2.0 * iajb * iajb *D;
-                   robplmp2-=1.0 * iajb*ibja*D;
-             
-                }
-            }
-         }*/
-      //}
-    //} 
     boost::shared_ptr<DFTensor> DF(new DFTensor(aoBasis, ribasis, Ca, naocc, navir, naocc, navir, options)); 
     SharedMatrix Imo= DF->Idfmo();
     //SharedMatrix Imo= DF->Imo();
     //Imo->print();
+    /*
     double MP2_energy = 0.0;
     for(int i = 0; i < naocc; i++){
        for(int j = 0; j < naocc; j++){
@@ -280,7 +260,8 @@ PsiReturnType dfmp2(Options &options)
           }
        }
     }
-    outfile->Printf("\n\n\t Energy with Imo: %20.12f", MP2_energy);
+    */
+    //outfile->Print("\n\n\t Energy with Imo: %20.12f", MP2_energy);
      
    
     

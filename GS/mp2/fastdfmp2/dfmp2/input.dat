@@ -11,7 +11,7 @@ symmetry c1
 }
 
 set {
-  basis cc-pvdz
+  basis 6-31g
   df_basis_mp2 cc-pvdz-ri
   freeze_core false
   memory 1gb

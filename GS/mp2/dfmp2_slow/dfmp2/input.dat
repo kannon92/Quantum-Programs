@@ -5,8 +5,8 @@ sys.path.insert(0, './..')
 import dfmp2
 
 molecule {
-F 0.00   0.000    1.200
-F 0.00   0.000    0.000
+H 0.00   0.000    1.200
+H 0.00   0.000    0.000
 symmetry c1
 }
 

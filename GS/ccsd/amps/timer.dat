@@ -1,0 +1,80 @@
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Sun Dec 14 18:07:38 2014
+Timers Off: Sun Dec 14 18:07:39 2014
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      2 calls
+JK: (A|Q)^-1/2:       0.15u       0.00s       0.00w      2 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      2 calls
+Form H      :       0.00u       0.00s       0.00w      2 calls
+Form S/X    :       0.00u       0.00s       0.00w      2 calls
+Guess       :       0.00u       0.00s       0.00w      2 calls
+Form G      :       0.03u       0.02s       0.00w     26 calls
+JK: D       :       0.00u       0.00s       0.00w     26 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     16 calls
+JK: JK      :       0.00u       0.02s       0.00w     26 calls
+JK: J       :       0.00u       0.00s       0.00w     16 calls
+JK: J1      :       0.00u       0.00s       0.00w     16 calls
+JK: J2      :       0.00u       0.00s       0.00w     16 calls
+JK: K       :       0.00u       0.00s       0.00w     16 calls
+JK: K1      :       0.00u       0.00s       0.00w     16 calls
+JK: K2      :       0.00u       0.00s       0.00w     16 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     16 calls
+Form F      :       0.00u       0.00s       0.00w     26 calls
+DIIS        :       0.02u       0.00s       0.00w     26 calls
+DIISManager::add_entry:       0.02u       0.00s       0.00w     26 calls
+Form C      :       0.00u       0.00s       0.00w     26 calls
+Form D      :       0.00u       0.00s       0.00w     26 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     24 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     24 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     24 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     24 calls
+presort     :       0.00u       0.00s       0.00w      1 call
+RHF:1sthalf :       0.00u       0.00s       0.00w      1 call
+RHF:midsort :       0.00u       0.00s       0.00w      1 call
+RHF:2ndhalf :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Sun Dec 14 18:13:52 2014
+Timers Off: Sun Dec 14 18:13:53 2014
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      2 calls
+JK: (A|Q)^-1/2:       0.13u       0.00s       0.00w      2 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      2 calls
+Form H      :       0.00u       0.00s       0.00w      2 calls
+Form S/X    :       0.00u       0.00s       0.00w      2 calls
+Guess       :       0.00u       0.00s       0.00w      2 calls
+Form G      :       0.05u       0.00s       0.00w     26 calls
+JK: D       :       0.00u       0.00s       0.00w     26 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     16 calls
+JK: JK      :       0.02u       0.00s       0.00w     26 calls
+JK: J       :       0.00u       0.00s       0.00w     16 calls
+JK: J1      :       0.00u       0.00s       0.00w     16 calls
+JK: J2      :       0.00u       0.00s       0.00w     16 calls
+JK: K       :       0.02u       0.00s       0.00w     16 calls
+JK: K1      :       0.00u       0.00s       0.00w     16 calls
+JK: K2      :       0.02u       0.00s       0.00w     16 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     16 calls
+Form F      :       0.00u       0.00s       0.00w     26 calls
+DIIS        :       0.00u       0.00s       0.00w     26 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     26 calls
+Form C      :       0.00u       0.00s       0.00w     26 calls
+Form D      :       0.00u       0.00s       0.00w     26 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     24 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     24 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     24 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     24 calls
+presort     :       0.00u       0.00s       0.00w      1 call
+RHF:1sthalf :       0.00u       0.00s       0.00w      1 call
+RHF:midsort :       0.00u       0.02s       0.00w      1 call
+RHF:2ndhalf :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************

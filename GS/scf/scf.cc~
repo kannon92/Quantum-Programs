@@ -99,6 +99,7 @@ PsiReturnType scf(Options &options)
     hMat->add(vMat);
     hMat->print();
 
+    SharedVector tei(new Vector("TEI", nbf[0]*nbf[0]*nbf[0]*nbf[0]));
     if(doTei){
          outfile->Printf( "\n  Two-electron Integrals\n\n");
 
@@ -122,12 +123,19 @@ PsiReturnType scf(Options &options)
                     outfile->Printf( "\t(%2d %2d | %2d %2d) = %20.15f\n",
                         p, q, r, s, buffer[intIter.index()]);
                     ++count;
+                    tei->set(INDEX4(p,q,r,s),buffer[intIter.index()]); 
                 }
             }
         }
         outfile->Printf("\n\tThere are %d unique integrals\n\n", count);
     }
 
+
+    //Starting SCF Procedure
+
+    SharedMatrix F(new Matrix("Fock", nbf[0],nbf[0]));
+   
+    
     return Success;
 }
 

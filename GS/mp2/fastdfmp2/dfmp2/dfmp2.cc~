@@ -130,27 +130,81 @@ extern "C" PsiReturnType dfmp2(Options &options)
     B->print();
     
   
-    //This dimension because data is layed out (mo*mo) by Q
-    //This is the part of the code I am not confident in.  
-    //How exactly do I read into from the disk.  
-    //These are layed out in slowest to fastest by p by q by naux
     //for(int p = 0; p < naocc+navir; p++){
-    fseek(Bf,(naocc+navir)*(naocc+navir)*nQ*sizeof(double), SEEK_SET);
+    
+    //This assumes that the code can all fit in core.  
+    //Rob's original code does this in blocks.  I could use that if I wanted.  
+    //The code is arranged in the file in order of fastest index: naux, nmo, nmo
+    fseek(Bf,0, SEEK_SET);
     fread(Bpqp[0], sizeof(double),nQ*(naocc+navir)*(naocc+navir), Bf); 
-    //}
     Bpq->print();
+    //EMP2_corr = \sum_{ijab} (ia|jb) * (2(ia|jb) - (ib|ja))/(occ - vir)
+    
     //Bpq->print();
+    SharedMatrix pqrs(new Matrix("pqrs", (naocc+navir)*(naocc+navir), (naocc+navir)*(naocc+navir)));
+    //This was used as a test to see if I read the integrals in correctly.  I did!
+    double val = 0.0;
+    double valk = 0.0;
+    for(int p = 0; p < (naocc+navir); p++){
+      for(int q = 0; q < (naocc+navir); q++){
+         for(int r = 0; r < (naocc+navir); r++){
+            for(int s = 0; s < (naocc+navir); s++){
+                for(int B = 0; B < nQ; B++){
+                    int Bq = q*nQ + B;
+                    int Bs = s*nQ + B;
+                    val+=Bpq->get(p,Bq)*Bpq->get(r,Bs);
+                }
+                int pq = p*(naocc+navir) + q;
+                int rs = r*(naocc+navir) + s;
+                pqrs->set(pq,rs,val);
+     
+                val = 0.0;
+             }
+          }
+       }
+    }
+    pqrs->print();
+    double mp2_energy = 0.0;
+    for(int i = 0; i < naocc; i++){
+       for(int a = naocc; a < naocc+navir; a++){
+          int ia = INDEX2(i,a); 
+          for(int j = 0; j < naocc; j++){
+             int ja = INDEX2(j,a);
+             for(int b = naocc; b < naocc+navir; b++){
+               int jb = INDEX2(j,b);
+               int ib = INDEX2(i,b);
+               double denom = eps_aocc->get(i) + eps_aocc->get(j) - eps_avir->get(a-naocc) - eps_avir->get(b-naocc);
+               int ia = 
+               mp2_energy+=(pqrs->get(ia,jb))*(2.0*pqrs->get(ia,jb) - pqrs->get(ib,ja))/(denom);
+             }
+          }
+       }
+    }
+    
+    outfile->Printf("\nMP2_energy = %20.12f", mp2_energy);
   
     //These are generated using lib3index.  This could be used as a way to test my code.  
     //One major problem with lib3index is not this code is not parallezied like Rob's tensor code.  
     
     boost::shared_ptr<DFTensor> DF(new DFTensor(primary, auxiliary, Cpq, naocc, navir, naocc, navir, options));
     //The Qpq term - MO int with fitted folded in
-    SharedMatrix Qpq = DF->Qmo();
-    Qpq->print();
+    SharedMatrix ints = DF->Idfmo();
+    //Qpq->print();
+    //Another test.  
+   
+   /* SharedMatrix pqQtest(new Matrix("pqQtest", (naocc+navir), (naocc+navir)*nQ));
+    for(int Q = 0; Q < nQ; Q++){
+       for(int p = 0; p < (naocc+navir); p++){
+          for(int q = 0; q < (naocc+navir); q++){
+             int pQ = p*nQ + Q;
+             int pq = p*(naocc+navir) + q;
+             pqQtest->set(q,pQ,Qpq->get(Q,pq));
+             
+          }
+       }
+    }*/
+    //pqQtest->print();
     //Qpq * Qrs = pq by rs) - Fully two ints 
-    //SharedMatrix dfmo = DF->Idfmo();
-    //dfmo->print();
      
 
     /*std::vector<boost::shared_ptr<Matrix> > Iab;

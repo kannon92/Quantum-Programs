@@ -35,7 +35,6 @@ from pymodule import *
 import os
 import psi4
 plugdir = os.path.split(os.path.abspath(__file__))[0]
-print plugdir
 sofile2 = plugdir + '/' + os.path.split(plugdir)[1] + '.so'
 sofile  = 'dfmp2.so'
 psi4.plugin_load(sofile)
