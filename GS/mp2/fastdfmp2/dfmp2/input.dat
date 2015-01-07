@@ -5,20 +5,23 @@ sys.path.insert(0, './..')
 import dfmp2
 
 molecule {
-F 0.00   0.000    1.200
-F 0.00   0.000    0.000
+0 1
+H 
+O 1 1.02
+H 2 1.02 1 104.5 
 symmetry c1
 }
 
 set {
-  basis 6-31g
+  basis sto-3g
   df_basis_mp2 cc-pvdz-ri
   freeze_core false
+  scf_type df
   memory 1gb
 }
 
 set dfmp2 {
-  print 1
+ print 1
 }
 energy('scf')
 energy('mp2')

@@ -100,12 +100,8 @@ extern "C" PsiReturnType dfmp2(Options &options)
     df->print_header();
     df->compute();
 
-    //boost::shared_ptr<Tensor> pqB =CoreTensor::build("B", "NAUX",nQ, "NALL", naocc+navir, "NALL", naocc+navir);
     boost::shared_ptr<Tensor> B = df->ints()["B"];
     df.reset();
-    //thce->print();
-    //pqB->print();
-    //B->swap_in(true);
     
 
     //FILE* Bf = B->file_pointer();
@@ -121,11 +117,11 @@ extern "C" PsiReturnType dfmp2(Options &options)
     long int max_o = doubles / (2L * nvQ);
     max_o = (max_o > no ? no : max_o);
    
-    boost::shared_ptr<Matrix> Bpq(new Matrix("pqB",(naocc+navir),(naocc+navir)*nQ )); 
-    boost::shared_ptr<Matrix> Brs(new Matrix("rsB",(naocc+navir),(naocc+navir)*nQ )); 
+    boost::shared_ptr<Matrix> pqB(new Matrix("pqB",(naocc+navir)*(naocc+navir),nQ )); 
+    boost::shared_ptr<Matrix> Bpq(new Matrix("Bpq",(naocc+navir),(naocc+navir)*nQ )); 
 
     double** Bpqp = Bpq->pointer();
-    double** Brsp = Brs->pointer();
+    double** pqBp = pqB->pointer();
     FILE* Bf = B->file_pointer();
     B->print();
     
@@ -137,12 +133,13 @@ extern "C" PsiReturnType dfmp2(Options &options)
     //The code is arranged in the file in order of fastest index: naux, nmo, nmo
     fseek(Bf,0, SEEK_SET);
     fread(Bpqp[0], sizeof(double),nQ*(naocc+navir)*(naocc+navir), Bf); 
-    Bpq->print();
     //EMP2_corr = \sum_{ijab} (ia|jb) * (2(ia|jb) - (ib|ja))/(occ - vir)
     
     //Bpq->print();
     SharedMatrix pqrs(new Matrix("pqrs", (naocc+navir)*(naocc+navir), (naocc+navir)*(naocc+navir)));
+    SharedMatrix pqrs_gemm(new Matrix("pqrs_gemm", (naocc+navir)*(naocc+navir), (naocc+navir)*(naocc+navir)));
     //This was used as a test to see if I read the integrals in correctly.  I did!
+    
     double val = 0.0;
     double valk = 0.0;
     for(int p = 0; p < (naocc+navir); p++){
@@ -150,9 +147,11 @@ extern "C" PsiReturnType dfmp2(Options &options)
          for(int r = 0; r < (naocc+navir); r++){
             for(int s = 0; s < (naocc+navir); s++){
                 for(int B = 0; B < nQ; B++){
-                    int Bq = q*nQ + B;
-                    int Bs = s*nQ + B;
-                    val+=Bpq->get(p,Bq)*Bpq->get(r,Bs);
+                    int qB = q*nQ + B;
+                    int sB = s*nQ + B;
+                    val+=Bpq->get(p,qB)*Bpq->get(r,sB);
+                    pqB->set(p*(naocc+navir)+q,B,Bpq->get(p,qB));
+                    
                 }
                 int pq = p*(naocc+navir) + q;
                 int rs = r*(naocc+navir) + s;
@@ -163,19 +162,19 @@ extern "C" PsiReturnType dfmp2(Options &options)
           }
        }
     }
-    pqrs->print();
+    pqrs_gemm->gemm('N','T',(naocc+navir)*(naocc+navir),(naocc+navir)*(naocc+navir),nQ,1.0,pqB,nQ,pqB,nQ,0.0,(naocc+navir)*(naocc+navir),0,0,0);
     double mp2_energy = 0.0;
     for(int i = 0; i < naocc; i++){
        for(int a = naocc; a < naocc+navir; a++){
-          int ia = INDEX2(i,a); 
+          //int ia = INDEX2(i,a); 
           for(int j = 0; j < naocc; j++){
-             int ja = INDEX2(j,a);
+            // int ja = INDEX2(j,a);
              for(int b = naocc; b < naocc+navir; b++){
-               int jb = INDEX2(j,b);
-               int ib = INDEX2(i,b);
+             //  int jb = INDEX2(j,b);
+              // int ib = INDEX2(i,b);
                double denom = eps_aocc->get(i) + eps_aocc->get(j) - eps_avir->get(a-naocc) - eps_avir->get(b-naocc);
                int ia = 
-               mp2_energy+=(pqrs->get(ia,jb))*(2.0*pqrs->get(ia,jb) - pqrs->get(ib,ja))/(denom);
+               mp2_energy+=(pqrs_gemm->get(i*(naocc+navir)+a,j*(naocc+navir) + b))*(2.0*pqrs_gemm->get(i*(naocc+navir)+a,j*(naocc+navir) + b) - pqrs_gemm->get(i*(naocc+navir) + b,j*(naocc+navir) + a))/(denom);
              }
           }
        }

@@ -1,18 +1,18 @@
 
 Host: Kevins-MacBook-Pro.local
 
-Timers On : Thu Dec 11 10:51:59 2014
-Timers Off: Thu Dec 11 10:51:59 2014
+Timers On : Wed Jan  7 14:34:06 2015
+Timers Off: Wed Jan  7 14:34:06 2015
 
 Wall Time:        0.00 seconds
 
 JK: (A|mn)  :       0.00u       0.00s       0.00w      1 call
-JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      1 call
+JK: (A|Q)^-1/2:       0.02u       0.00s       0.00w      1 call
 JK: (Q|mn)  :       0.00u       0.00s       0.00w      1 call
 Form H      :       0.00u       0.00s       0.00w      1 call
 Form S/X    :       0.00u       0.00s       0.00w      1 call
 Guess       :       0.00u       0.00s       0.00w      1 call
-Form G      :       0.03u       0.00s       0.00w     13 calls
+Form G      :       0.00u       0.00s       0.00w     13 calls
 JK: D       :       0.00u       0.00s       0.00w     13 calls
 JK: USO2AO  :       0.00u       0.00s       0.00w      8 calls
 JK: JK      :       0.00u       0.00s       0.00w     13 calls

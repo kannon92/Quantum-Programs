@@ -29,7 +29,6 @@
 #include <libpsio/psio.hpp>
 #include <libtrans/integraltransform.h>
 #include <libmints/wavefunction.h>
-#include <libmints/vector.h>
 
 // This allows us to be lazy in getting the spaces in DPD calls
 #define ID(x) ints.DPD_ID(x)
@@ -69,7 +68,6 @@ mp2(Options &options)
 
     // Quickly check that there are no open shell orbitals here...
     int nirrep  = wfn->nirrep();
-    int mo      = wfn->nmo();
 
     // For now, we'll just transform for closed shells and generate all integrals.  For more elaborate use of the
     // LibTrans object, check out the plugin_mp2 example in the test suite.
@@ -88,8 +86,6 @@ mp2(Options &options)
     // To only process the permutationally unique integrals, change the ID("[A,A]") to ID("[A>=A]+")
     global_dpd_->buf4_init(&K, PSIF_LIBTRANS_DPD, 0, ID("[A,A]"), ID("[A,A]"),
                   ID("[A>=A]+"), ID("[A>=A]+"), 0, "MO Ints (AA|AA)");
-
-    SharedVector tei(new Vector("teimo", mo*mo*mo*mo));
     for(int h = 0; h < nirrep; ++h){
         global_dpd_->buf4_mat_irrep_init(&K, h);
         global_dpd_->buf4_mat_irrep_rd(&K, h);
@@ -109,13 +105,12 @@ mp2(Options &options)
                 int srel = s - K.params->soff[ssym];
                 // Print out the absolute orbital numbers, the relative (within irrep)
                 // numbers, the symmetries, and the integral itself
-                outfile->Printf( "(%2d %2d | %2d %2d) = %16.10f, "
+                psi::outfile->Printf("(%2d %2d | %2d %2d) = %16.10f, "
                                  "symmetries = (%1d %1d | %1d %1d), "
                                  "relative indices = (%2d %2d | %2d %2d)\n",
                                  p, q, r, s, K.matrix[h][pq][rs], 
                                  psym, qsym, rsym, ssym, 
                                  prel, qrel, rrel, srel);
-                tei->set(INDEX4(p,q,r,s),K.matrix[h][pq][rs]);
             }
         }
         global_dpd_->buf4_mat_irrep_close(&K, h);

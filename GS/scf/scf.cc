@@ -70,7 +70,7 @@ PsiReturnType scf(Options &options)
     molecule->print();
     int nbf[] = { aoBasis->nbf() };
     double nucrep = molecule->nuclear_repulsion_energy();
-    outfile->Printf( "\n    Nuclear repulsion energy: %16.8f\n\n", nucrep);
+    psi::outfile->Printf("\n    Nuclear repulsion energy: %16.8f\n\n", nucrep);
 
     // The matrix factory can create matrices of the correct dimensions...
     boost::shared_ptr<MatrixFactory> factory(new MatrixFactory);
@@ -99,9 +99,8 @@ PsiReturnType scf(Options &options)
     hMat->add(vMat);
     hMat->print();
 
-    SharedVector tei(new Vector("TEI", nbf[0]*nbf[0]*nbf[0]*nbf[0]));
     if(doTei){
-         outfile->Printf( "\n  Two-electron Integrals\n\n");
+         psi::outfile->Printf("\n  Two-electron Integrals\n\n");
 
         // Now, the two-electron integrals
         boost::shared_ptr<TwoBodyAOInt> eri(integral->eri());
@@ -120,22 +119,15 @@ PsiReturnType scf(Options &options)
                     int q = intIter.j();
                     int r = intIter.k();
                     int s = intIter.l();
-                    outfile->Printf( "\t(%2d %2d | %2d %2d) = %20.15f\n",
+                    psi::outfile->Printf("\t(%2d %2d | %2d %2d) = %20.15f\n",
                         p, q, r, s, buffer[intIter.index()]);
                     ++count;
-                    tei->set(INDEX4(p,q,r,s),buffer[intIter.index()]); 
                 }
             }
         }
-        outfile->Printf("\n\tThere are %d unique integrals\n\n", count);
+        psi::outfile->Printf("\n\tThere are %d unique integrals\n\n", count);
     }
 
-
-    //Starting SCF Procedure
-
-    SharedMatrix F(new Matrix("Fock", nbf[0],nbf[0]));
-   
-    
     return Success;
 }
 

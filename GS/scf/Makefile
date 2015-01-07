@@ -36,10 +36,10 @@ CXXSRC = $(notdir $(wildcard *.cc))
 
 # Flags that were used to compile Psi4.
 CXX = /usr/bin/llvm-g++
-CXXDEFS = -DFC_SYMBOL=2
-CXXFLAGS = -O0 -g -fPIC -std=c++11
-INCLUDES = -I/Users/kevinhannon/Programs/psi4private-obj/boost/boost_1_55_0 -I/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6 -I/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6 -I/Users/kevinhannon/Programs/psi4private-obj/src/lib -I/Users/kevinhannon/Programs/psi4private/src/lib -I/Users/kevinhannon/Programs/psi4private/include -I/Users/kevinhannon/Programs/psi4private-obj/include
-OBJDIR = /Users/kevinhannon/Programs/psi4private-obj
+CXXDEFS = -DFC_SYMBOL=2 -DHAVE_SYSTEM_NATIVE_LAPACK -DHAVE_SYSTEM_NATIVE_BLAS -DHAS_CXX11_VARIADIC_TEMPLATES -DHAS_CXX11_STATIC_ASSERT -DHAS_CXX11_SIZEOF_MEMBER -DHAS_CXX11_RVALUE_REFERENCES -DHAS_CXX11_LIB_REGEX -DHAS_CXX11_NULLPTR -DHAS_CXX11_LONG_LONG -DHAS_CXX11_LAMBDA -DHAS_CXX11_INITIALIZER_LIST -DHAS_CXX11_DECLTYPE -DHAS_CXX11_CSTDINT_H -DHAS_CXX11_CONSTEXPR -DHAS_CXX11_AUTO_RET_TYPE -DHAS_CXX11_AUTO -DHAS_CXX11_FUNC -DHAS_CXX11 -DVAR_MFDS -DSYS_DARWIN
+CXXFLAGS = -DRESTRICT=__restrict__ -fPIC -std=c++11 -O3 -DNDEBUG -Wno-unused
+INCLUDES = -I/Users/kevinhannon/Programs/psi4cmake/psi4/obj/src/lib -I/Users/kevinhannon/Programs/psi4cmake/psi4/src/lib -I/Users/kevinhannon/Programs/psi4cmake/psi4/include -I/Users/kevinhannon/Programs/psi4cmake/psi4/obj/include -I/Users/kevinhannon/Programs/psi4cmake/psi4/obj/boost/include -I/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include
+OBJDIR = /Users/kevinhannon/Programs/psi4cmake/psi4/obj
 
 # Used to determine linking flags.
 UNAME = $(shell uname)
@@ -75,5 +75,4 @@ $(PSITARGET): $(BINOBJ)
 # Erase all compiled intermediate files
 clean:
 	rm -f $(BINOBJ) $(PSITARGET) *.d *.pyc *.test output.dat psi.timer.dat
-
 

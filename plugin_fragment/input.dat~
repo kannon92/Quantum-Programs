@@ -66,8 +66,8 @@ set plugin_fragment {
 }
 
 energy('scf')
-#energy('plugin_fragment')
-energy('ccsd')
+energy('plugin_fragment')
+#energy('ccsd')
 #print cc2
 #print scf
 #cc2newH = energy('conv-mp2')

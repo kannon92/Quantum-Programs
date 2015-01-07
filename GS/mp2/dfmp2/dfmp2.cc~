@@ -209,7 +209,7 @@ PsiReturnType dfmp2(Options &options)
     
     SharedMatrix C = wfn->Ca();
     boost::shared_ptr<DFTensor> DF(new DFTensor(aoBasis, ribasis, C, naocc, navir, naocc, navir, options));
-    SharedMatrix Imo = DF->Imo();
+    SharedMatrix Imo = DF->Idfmo();
     Imo->print();
   
 
