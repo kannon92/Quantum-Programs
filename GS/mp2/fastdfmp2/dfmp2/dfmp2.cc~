@@ -11,6 +11,7 @@
 #include <boost/shared_ptr.hpp>
 #include <libmints/typedefs.h>
 #include <lib3index/dftensor.h>
+#include <lib3index/cholesky.h>
 #include <math.h>
 
 #ifdef _OPENMP
@@ -31,6 +32,7 @@ extern "C" int read_options(std::string name, Options &options)
         options.add_int("DEBUG", 0);
         /*- Bench level -*/
         options.add_int("BENCH", 0);
+        options.add_double("CHOLESKY_TOLERANCE", 1e-8);
 
     }
 
@@ -139,6 +141,44 @@ extern "C" PsiReturnType dfmp2(Options &options)
     SharedMatrix pqrs(new Matrix("pqrs", (naocc+navir)*(naocc+navir), (naocc+navir)*(naocc+navir)));
     SharedMatrix pqrs_gemm(new Matrix("pqrs_gemm", (naocc+navir)*(naocc+navir), (naocc+navir)*(naocc+navir)));
     //This was used as a test to see if I read the integrals in correctly.  I did!
+    //See if I can generate CD integrals
+    outfile->Printf("\n Generating CD Integrals");
+    boost::shared_ptr<IntegralFactory> integral(new IntegralFactory(primary, primary, primary, primary));
+    double tol_cd = options.get_double("CHOLESKY_TOLERANCE");
+    boost::shared_ptr<CholeskyERI> Ch (new CholeskyERI(boost::shared_ptr<TwoBodyAOInt>(integral->eri()),0.0 ,tol_cd, Process::environment.get_memory()));
+    Ch->choleskify();
+    int nL = Ch->Q();
+    outfile->Printf("\n Number of cholesky vectors %d to satisfy %20.12f tolerance\n", nL,tol_cd);
+    
+    
+    Cpq->print();
+    SharedMatrix Lao = Ch->L();
+    SharedMatrix L(new Matrix("Lmo", nL, (naocc+navir)*(naocc+navir)));
+    for(int l = 0; l < nL; l++){
+       for(int p = 0; p < naocc+navir; p++){
+          for(int q = 0; q < naocc+navir; q++){
+             for(int mu = 0; mu < nn; mu++){
+                for(int nu = 0; nu < nn; nu++){
+                   L->add(l,p*(naocc+navir)+q,Lao->get(l,mu*(nn)+nu)*Cpq->get(mu,p)*Cpq->get(nu,q)); 
+                }
+             }
+          }
+       }
+    }
+    for(int p = 0; p < naocc+navir; p++){
+       for(int q = 0; q < naocc+navir; q++){
+          for(int r = 0; r < naocc+navir; r++){
+             for(int s = 0; s < naocc + navir; s++){
+                for(int l = 0; l < nL; l++){
+     //              pqrs->add(p*(naocc+navir)+q,r*(naocc+navir)+s, L->get(l,p*(naocc+navir)+q)*L->get(l,r*(naocc+navir)+s));
+                }
+             }
+          }
+       }
+    }
+    //L->print();
+    
+    
     
     double val = 0.0;
     double valk = 0.0;
@@ -151,11 +191,12 @@ extern "C" PsiReturnType dfmp2(Options &options)
                     int sB = s*nQ + B;
                     val+=Bpq->get(p,qB)*Bpq->get(r,sB);
                     pqB->set(p*(naocc+navir)+q,B,Bpq->get(p,qB));
+                    //val+=L->get(B,p*(naocc+navir)+q)*L->get(B,r*(naocc+navir) + s); 
                     
                 }
                 int pq = p*(naocc+navir) + q;
                 int rs = r*(naocc+navir) + s;
-                pqrs->set(pq,rs,val);
+                //pqrs->set(pq,rs,val);
      
                 val = 0.0;
              }
@@ -163,7 +204,11 @@ extern "C" PsiReturnType dfmp2(Options &options)
        }
     }
     pqrs_gemm->gemm('N','T',(naocc+navir)*(naocc+navir),(naocc+navir)*(naocc+navir),nQ,1.0,pqB,nQ,pqB,nQ,0.0,(naocc+navir)*(naocc+navir),0,0,0);
-    double mp2_energy = 0.0;
+    pqrs->gemm('T','N',(naocc+navir)*(naocc+navir),(naocc+navir)*(naocc+navir),nL,1.0,L,(naocc+navir)*(naocc+navir),L,(naocc+navir)*(naocc+navir),0.0,(naocc+navir)*(naocc+navir),0,0,0);
+    //pqrs->gemm('T','N',1.0,L,L,0.0);
+    pqrs->print();
+    double mp2_energy_L = 0.0;
+    double mp2_energy_D = 0.0;
     for(int i = 0; i < naocc; i++){
        for(int a = naocc; a < naocc+navir; a++){
           //int ia = INDEX2(i,a); 
@@ -173,14 +218,16 @@ extern "C" PsiReturnType dfmp2(Options &options)
              //  int jb = INDEX2(j,b);
               // int ib = INDEX2(i,b);
                double denom = eps_aocc->get(i) + eps_aocc->get(j) - eps_avir->get(a-naocc) - eps_avir->get(b-naocc);
-               int ia = 
-               mp2_energy+=(pqrs_gemm->get(i*(naocc+navir)+a,j*(naocc+navir) + b))*(2.0*pqrs_gemm->get(i*(naocc+navir)+a,j*(naocc+navir) + b) - pqrs_gemm->get(i*(naocc+navir) + b,j*(naocc+navir) + a))/(denom);
+               mp2_energy_L+=(pqrs->get(i*(naocc+navir)+a,j*(naocc+navir) + b))*(2.0*pqrs->get(i*(naocc+navir)+a,j*(naocc+navir) + b) - pqrs->get(i*(naocc+navir) + b,j*(naocc+navir) + a))/(denom);
+               mp2_energy_D+=(pqrs_gemm->get(i*(naocc+navir)+a,j*(naocc+navir) + b))*(2.0*pqrs_gemm->get(i*(naocc+navir)+a,j*(naocc+navir) + b) - pqrs_gemm->get(i*(naocc+navir) + b,j*(naocc+navir) + a))/(denom);
              }
           }
        }
     }
     
-    outfile->Printf("\nMP2_energy = %20.12f", mp2_energy);
+    outfile->Printf("\nMP2_energy = %20.12f for laplace", mp2_energy_L);
+    outfile->Printf("\nMP2_energy = %20.12f for density fitting", mp2_energy_D);
+    outfile->Printf("\nERROR = %20.12f", fabs(mp2_energy_D - mp2_energy_L));
   
     //These are generated using lib3index.  This could be used as a way to test my code.  
     //One major problem with lib3index is not this code is not parallezied like Rob's tensor code.  

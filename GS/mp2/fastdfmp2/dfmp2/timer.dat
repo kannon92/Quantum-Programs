@@ -2987,3 +2987,1854 @@ DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
 DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
 
 ***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:03:44 2015
+Timers Off: Wed Jan  7 17:03:45 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.02s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.02u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.02u       0.00s       0.00w     23 calls
+JK: J       :       0.02u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.02u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:04:07 2015
+Timers Off: Wed Jan  7 17:04:08 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       1.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.02s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:09:31 2015
+Timers Off: Wed Jan  7 17:09:32 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.02u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.02u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.02u       0.00s       0.00w     23 calls
+JK: K1      :       0.02u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.02s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.02s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:09:50 2015
+Timers Off: Wed Jan  7 17:09:51 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.02u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:15:19 2015
+Timers Off: Wed Jan  7 17:15:20 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.02u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.02u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:16:48 2015
+Timers Off: Wed Jan  7 17:16:48 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.02s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:19:15 2015
+Timers Off: Wed Jan  7 17:19:15 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:19:23 2015
+Timers Off: Wed Jan  7 17:19:24 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.02u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.02u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.02u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:22:01 2015
+Timers Off: Wed Jan  7 17:22:02 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.08u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.02s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.02s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.02s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:23:41 2015
+Timers Off: Wed Jan  7 17:23:42 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.02u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.02u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.02u       0.00s       0.00w     23 calls
+JK: K1      :       0.02u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:24:31 2015
+Timers Off: Wed Jan  7 17:24:31 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.02u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.02u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: dhcp189-104.emerson.emory.edu
+
+Timers On : Wed Jan  7 17:24:56 2015
+Timers Off: Wed Jan  7 17:24:57 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:24:35 2015
+Timers Off: Wed Jan  7 21:24:35 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.02u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.02s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:29:41 2015
+Timers Off: Wed Jan  7 21:29:42 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       1.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.02s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.02u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.02u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:30:07 2015
+Timers Off: Wed Jan  7 21:30:08 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     23 calls
+JK: D       :       0.00u       0.00s       0.00w     23 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     23 calls
+JK: JK      :       0.00u       0.00s       0.00w     23 calls
+JK: J       :       0.00u       0.00s       0.00w     23 calls
+JK: J1      :       0.00u       0.00s       0.00w     23 calls
+JK: J2      :       0.00u       0.00s       0.00w     23 calls
+JK: K       :       0.00u       0.00s       0.00w     23 calls
+JK: K1      :       0.00u       0.00s       0.00w     23 calls
+JK: K2      :       0.00u       0.00s       0.00w     23 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     23 calls
+Form F      :       0.00u       0.00s       0.00w     23 calls
+DIIS        :       0.00u       0.00s       0.00w     23 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     23 calls
+Form C      :       0.00u       0.00s       0.00w     23 calls
+Form D      :       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     20 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:30:39 2015
+Timers Off: Wed Jan  7 21:30:40 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.02u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.08u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.02s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     31 calls
+JK: D       :       0.00u       0.00s       0.00w     31 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     31 calls
+JK: JK      :       0.00u       0.00s       0.00w     31 calls
+JK: J       :       0.00u       0.00s       0.00w     31 calls
+JK: J1      :       0.00u       0.00s       0.00w     31 calls
+JK: J2      :       0.00u       0.00s       0.00w     31 calls
+JK: K       :       0.00u       0.00s       0.00w     31 calls
+JK: K1      :       0.00u       0.00s       0.00w     31 calls
+JK: K2      :       0.00u       0.00s       0.00w     31 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     31 calls
+Form F      :       0.00u       0.00s       0.00w     31 calls
+DIIS        :       0.00u       0.00s       0.00w     31 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     31 calls
+Form C      :       0.00u       0.00s       0.00w     31 calls
+Form D      :       0.00u       0.00s       0.00w     31 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     27 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.02s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.02s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:35:46 2015
+Timers Off: Wed Jan  7 21:35:47 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.02u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     31 calls
+JK: D       :       0.00u       0.00s       0.00w     31 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     31 calls
+JK: JK      :       0.00u       0.00s       0.00w     31 calls
+JK: J       :       0.00u       0.00s       0.00w     31 calls
+JK: J1      :       0.00u       0.00s       0.00w     31 calls
+JK: J2      :       0.00u       0.00s       0.00w     31 calls
+JK: K       :       0.00u       0.00s       0.00w     31 calls
+JK: K1      :       0.00u       0.00s       0.00w     31 calls
+JK: K2      :       0.00u       0.00s       0.00w     31 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     31 calls
+Form F      :       0.00u       0.00s       0.00w     31 calls
+DIIS        :       0.00u       0.00s       0.00w     31 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     31 calls
+Form C      :       0.00u       0.00s       0.00w     31 calls
+Form D      :       0.00u       0.00s       0.00w     31 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     27 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.02s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:36:33 2015
+Timers Off: Wed Jan  7 21:36:34 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.08u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     31 calls
+JK: D       :       0.00u       0.00s       0.00w     31 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     31 calls
+JK: JK      :       0.00u       0.00s       0.00w     31 calls
+JK: J       :       0.00u       0.00s       0.00w     31 calls
+JK: J1      :       0.00u       0.00s       0.00w     31 calls
+JK: J2      :       0.00u       0.00s       0.00w     31 calls
+JK: K       :       0.00u       0.00s       0.00w     31 calls
+JK: K1      :       0.00u       0.00s       0.00w     31 calls
+JK: K2      :       0.00u       0.00s       0.00w     31 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     31 calls
+Form F      :       0.00u       0.00s       0.00w     31 calls
+DIIS        :       0.00u       0.00s       0.00w     31 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     31 calls
+Form C      :       0.00u       0.00s       0.00w     31 calls
+Form D      :       0.00u       0.00s       0.00w     31 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     27 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.02s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:36:52 2015
+Timers Off: Wed Jan  7 21:36:53 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.02s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w      8 calls
+JK: D       :       0.00u       0.00s       0.00w      8 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w      8 calls
+JK: JK      :       0.00u       0.00s       0.00w      8 calls
+JK: J       :       0.00u       0.00s       0.00w      8 calls
+JK: J1      :       0.00u       0.00s       0.00w      8 calls
+JK: J2      :       0.00u       0.00s       0.00w      8 calls
+JK: K       :       0.00u       0.00s       0.00w      8 calls
+JK: K1      :       0.00u       0.00s       0.00w      8 calls
+JK: K2      :       0.00u       0.00s       0.00w      8 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w      8 calls
+Form F      :       0.00u       0.00s       0.00w      8 calls
+DIIS        :       0.00u       0.00s       0.00w      8 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w      8 calls
+Form C      :       0.00u       0.00s       0.00w      8 calls
+Form D      :       0.00u       0.00s       0.00w      8 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w      4 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w      4 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w      4 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w      4 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:37:18 2015
+Timers Off: Wed Jan  7 21:37:19 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     20 calls
+JK: D       :       0.00u       0.00s       0.00w     20 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     20 calls
+JK: JK      :       0.00u       0.00s       0.00w     20 calls
+JK: J       :       0.00u       0.00s       0.00w     20 calls
+JK: J1      :       0.00u       0.00s       0.00w     20 calls
+JK: J2      :       0.00u       0.00s       0.00w     20 calls
+JK: K       :       0.00u       0.00s       0.00w     20 calls
+JK: K1      :       0.00u       0.00s       0.00w     20 calls
+JK: K2      :       0.00u       0.00s       0.00w     20 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     20 calls
+Form F      :       0.00u       0.00s       0.00w     20 calls
+DIIS        :       0.00u       0.00s       0.00w     20 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     20 calls
+Form C      :       0.00u       0.00s       0.00w     20 calls
+Form D      :       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     16 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.02s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.02s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:45:34 2015
+Timers Off: Wed Jan  7 21:45:34 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     15 calls
+JK: D       :       0.00u       0.00s       0.00w     15 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     15 calls
+JK: JK      :       0.00u       0.00s       0.00w     15 calls
+JK: J       :       0.00u       0.00s       0.00w     15 calls
+JK: J1      :       0.00u       0.00s       0.00w     15 calls
+JK: J2      :       0.00u       0.00s       0.00w     15 calls
+JK: K       :       0.00u       0.00s       0.00w     15 calls
+JK: K1      :       0.00u       0.00s       0.00w     15 calls
+JK: K2      :       0.00u       0.00s       0.00w     15 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     15 calls
+Form F      :       0.00u       0.00s       0.00w     15 calls
+DIIS        :       0.00u       0.00s       0.00w     15 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     15 calls
+Form C      :       0.00u       0.00s       0.00w     15 calls
+Form D      :       0.00u       0.00s       0.00w     15 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     12 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:48:47 2015
+Timers Off: Wed Jan  7 21:48:47 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     15 calls
+JK: D       :       0.00u       0.00s       0.00w     15 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     15 calls
+JK: JK      :       0.00u       0.00s       0.00w     15 calls
+JK: J       :       0.00u       0.00s       0.00w     15 calls
+JK: J1      :       0.00u       0.00s       0.00w     15 calls
+JK: J2      :       0.00u       0.00s       0.00w     15 calls
+JK: K       :       0.00u       0.00s       0.00w     15 calls
+JK: K1      :       0.00u       0.00s       0.00w     15 calls
+JK: K2      :       0.00u       0.00s       0.00w     15 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     15 calls
+Form F      :       0.00u       0.00s       0.00w     15 calls
+DIIS        :       0.00u       0.00s       0.00w     15 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     15 calls
+Form C      :       0.00u       0.00s       0.00w     15 calls
+Form D      :       0.00u       0.00s       0.00w     15 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     12 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:50:09 2015
+Timers Off: Wed Jan  7 21:50:10 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      3 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      3 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      3 calls
+Form H      :       0.00u       0.00s       0.00w      3 calls
+Form S/X    :       0.00u       0.00s       0.00w      3 calls
+Guess       :       0.00u       0.00s       0.00w      3 calls
+Form G      :       0.00u       0.00s       0.00w     15 calls
+JK: D       :       0.00u       0.00s       0.00w     15 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     15 calls
+JK: JK      :       0.00u       0.00s       0.00w     15 calls
+JK: J       :       0.00u       0.00s       0.00w     15 calls
+JK: J1      :       0.00u       0.00s       0.00w     15 calls
+JK: J2      :       0.00u       0.00s       0.00w     15 calls
+JK: K       :       0.00u       0.00s       0.00w     15 calls
+JK: K1      :       0.00u       0.00s       0.00w     15 calls
+JK: K2      :       0.00u       0.00s       0.00w     15 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     15 calls
+Form F      :       0.00u       0.00s       0.00w     15 calls
+DIIS        :       0.00u       0.00s       0.00w     15 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     15 calls
+Form C      :       0.00u       0.00s       0.00w     15 calls
+Form D      :       0.00u       0.00s       0.00w     15 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     12 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       1.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 21:51:14 2015
+Timers Off: Wed Jan  7 21:51:15 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     20 calls
+JK: D       :       0.00u       0.00s       0.00w     20 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     20 calls
+JK: JK      :       0.00u       0.00s       0.00w     20 calls
+JK: J       :       0.00u       0.00s       0.00w     20 calls
+JK: J1      :       0.00u       0.00s       0.00w     20 calls
+JK: J2      :       0.00u       0.00s       0.00w     20 calls
+JK: K       :       0.00u       0.00s       0.00w     20 calls
+JK: K1      :       0.00u       0.00s       0.00w     20 calls
+JK: K2      :       0.00u       0.00s       0.00w     20 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     20 calls
+Form F      :       0.00u       0.00s       0.00w     20 calls
+DIIS        :       0.00u       0.00s       0.00w     20 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     20 calls
+Form C      :       0.02u       0.00s       0.00w     20 calls
+Form D      :       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     16 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 22:01:26 2015
+Timers Off: Wed Jan  7 22:01:27 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.02s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.02s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     20 calls
+JK: D       :       0.00u       0.00s       0.00w     20 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     20 calls
+JK: JK      :       0.00u       0.00s       0.00w     20 calls
+JK: J       :       0.00u       0.00s       0.00w     20 calls
+JK: J1      :       0.00u       0.00s       0.00w     20 calls
+JK: J2      :       0.00u       0.00s       0.00w     20 calls
+JK: K       :       0.00u       0.00s       0.00w     20 calls
+JK: K1      :       0.00u       0.00s       0.00w     20 calls
+JK: K2      :       0.00u       0.00s       0.00w     20 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     20 calls
+Form F      :       0.00u       0.00s       0.00w     20 calls
+DIIS        :       0.02u       0.00s       0.00w     20 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     20 calls
+Form C      :       0.00u       0.00s       0.00w     20 calls
+Form D      :       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate:       0.02u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     16 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.05s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.05s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 22:07:23 2015
+Timers Off: Wed Jan  7 22:07:24 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.02u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.02u       0.02s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     20 calls
+JK: D       :       0.00u       0.00s       0.00w     20 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     20 calls
+JK: JK      :       0.00u       0.00s       0.00w     20 calls
+JK: J       :       0.00u       0.00s       0.00w     20 calls
+JK: J1      :       0.00u       0.00s       0.00w     20 calls
+JK: J2      :       0.00u       0.00s       0.00w     20 calls
+JK: K       :       0.00u       0.00s       0.00w     20 calls
+JK: K1      :       0.00u       0.00s       0.00w     20 calls
+JK: K2      :       0.00u       0.00s       0.00w     20 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     20 calls
+Form F      :       0.00u       0.00s       0.00w     20 calls
+DIIS        :       0.02u       0.00s       0.00w     20 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     20 calls
+Form C      :       0.00u       0.00s       0.00w     20 calls
+Form D      :       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     16 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.05s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.05s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 22:08:35 2015
+Timers Off: Wed Jan  7 22:08:36 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.02s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     20 calls
+JK: D       :       0.00u       0.00s       0.00w     20 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     20 calls
+JK: JK      :       0.00u       0.00s       0.00w     20 calls
+JK: J       :       0.00u       0.00s       0.00w     20 calls
+JK: J1      :       0.00u       0.00s       0.00w     20 calls
+JK: J2      :       0.00u       0.00s       0.00w     20 calls
+JK: K       :       0.00u       0.00s       0.00w     20 calls
+JK: K1      :       0.00u       0.00s       0.00w     20 calls
+JK: K2      :       0.00u       0.00s       0.00w     20 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     20 calls
+Form F      :       0.00u       0.00s       0.00w     20 calls
+DIIS        :       0.00u       0.00s       0.00w     20 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     20 calls
+Form C      :       0.00u       0.00s       0.00w     20 calls
+Form D      :       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     16 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.03s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.03s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 22:09:25 2015
+Timers Off: Wed Jan  7 22:09:26 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.02u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     20 calls
+JK: D       :       0.00u       0.00s       0.00w     20 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     20 calls
+JK: JK      :       0.00u       0.00s       0.00w     20 calls
+JK: J       :       0.00u       0.00s       0.00w     20 calls
+JK: J1      :       0.00u       0.00s       0.00w     20 calls
+JK: J2      :       0.00u       0.00s       0.00w     20 calls
+JK: K       :       0.00u       0.00s       0.00w     20 calls
+JK: K1      :       0.00u       0.00s       0.00w     20 calls
+JK: K2      :       0.00u       0.00s       0.00w     20 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     20 calls
+Form F      :       0.00u       0.00s       0.00w     20 calls
+DIIS        :       0.00u       0.00s       0.00w     20 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     20 calls
+Form C      :       0.00u       0.00s       0.00w     20 calls
+Form D      :       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     16 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 22:10:11 2015
+Timers Off: Wed Jan  7 22:10:11 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.07u       0.02s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     20 calls
+JK: D       :       0.00u       0.00s       0.00w     20 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     20 calls
+JK: JK      :       0.00u       0.00s       0.00w     20 calls
+JK: J       :       0.00u       0.00s       0.00w     20 calls
+JK: J1      :       0.00u       0.00s       0.00w     20 calls
+JK: J2      :       0.00u       0.00s       0.00w     20 calls
+JK: K       :       0.00u       0.00s       0.00w     20 calls
+JK: K1      :       0.00u       0.00s       0.00w     20 calls
+JK: K2      :       0.00u       0.00s       0.00w     20 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     20 calls
+Form F      :       0.00u       0.00s       0.00w     20 calls
+DIIS        :       0.00u       0.00s       0.00w     20 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     20 calls
+Form C      :       0.00u       0.00s       0.00w     20 calls
+Form D      :       0.00u       0.00s       0.00w     20 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     16 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     16 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.02u       0.02s       0.00w      1 call
+Trans (OV|OV):       0.02u       0.02s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 23:38:30 2015
+Timers Off: Wed Jan  7 23:38:31 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.10u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.02u       0.00s       0.00w     27 calls
+JK: D       :       0.00u       0.00s       0.00w     27 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     27 calls
+JK: JK      :       0.00u       0.00s       0.00w     27 calls
+JK: J       :       0.00u       0.00s       0.00w     27 calls
+JK: J1      :       0.00u       0.00s       0.00w     27 calls
+JK: J2      :       0.00u       0.00s       0.00w     27 calls
+JK: K       :       0.00u       0.00s       0.00w     27 calls
+JK: K1      :       0.00u       0.00s       0.00w     27 calls
+JK: K2      :       0.00u       0.00s       0.00w     27 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     27 calls
+Form F      :       0.00u       0.00s       0.00w     27 calls
+DIIS        :       0.00u       0.00s       0.00w     27 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     27 calls
+Form C      :       0.00u       0.00s       0.00w     27 calls
+Form D      :       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     23 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.02s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.02s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.02s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 23:47:56 2015
+Timers Off: Wed Jan  7 23:47:57 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.12u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.03s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.02u       0.00s       0.00w     27 calls
+JK: D       :       0.00u       0.00s       0.00w     27 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     27 calls
+JK: JK      :       0.02u       0.00s       0.00w     27 calls
+JK: J       :       0.00u       0.00s       0.00w     27 calls
+JK: J1      :       0.00u       0.00s       0.00w     27 calls
+JK: J2      :       0.00u       0.00s       0.00w     27 calls
+JK: K       :       0.02u       0.00s       0.00w     27 calls
+JK: K1      :       0.00u       0.00s       0.00w     27 calls
+JK: K2      :       0.02u       0.00s       0.00w     27 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     27 calls
+Form F      :       0.00u       0.00s       0.00w     27 calls
+DIIS        :       0.00u       0.02s       0.00w     27 calls
+DIISManager::add_entry:       0.00u       0.02s       0.00w     27 calls
+Form C      :       0.00u       0.00s       0.00w     27 calls
+Form D      :       0.00u       0.00s       0.00w     27 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     23 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     23 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 23:48:17 2015
+Timers Off: Wed Jan  7 23:48:18 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.02u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.13u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.02s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.03u       0.00s       0.00w     34 calls
+JK: D       :       0.00u       0.00s       0.00w     34 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     34 calls
+JK: JK      :       0.03u       0.00s       0.00w     34 calls
+JK: J       :       0.00u       0.00s       0.00w     34 calls
+JK: J1      :       0.00u       0.00s       0.00w     34 calls
+JK: J2      :       0.00u       0.00s       0.00w     34 calls
+JK: K       :       0.02u       0.00s       0.00w     34 calls
+JK: K1      :       0.02u       0.00s       0.00w     34 calls
+JK: K2      :       0.00u       0.00s       0.00w     34 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     34 calls
+Form F      :       0.00u       0.00s       0.00w     34 calls
+DIIS        :       0.00u       0.00s       0.00w     34 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     34 calls
+Form C      :       0.00u       0.00s       0.00w     34 calls
+Form D      :       0.00u       0.00s       0.00w     34 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     30 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 23:49:46 2015
+Timers Off: Wed Jan  7 23:49:47 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.03u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.13u       0.00s       1.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.00u       0.00s       0.00w     34 calls
+JK: D       :       0.00u       0.00s       0.00w     34 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     34 calls
+JK: JK      :       0.00u       0.00s       0.00w     34 calls
+JK: J       :       0.00u       0.00s       0.00w     34 calls
+JK: J1      :       0.00u       0.00s       0.00w     34 calls
+JK: J2      :       0.00u       0.00s       0.00w     34 calls
+JK: K       :       0.00u       0.00s       0.00w     34 calls
+JK: K1      :       0.00u       0.00s       0.00w     34 calls
+JK: K2      :       0.00u       0.00s       0.00w     34 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     34 calls
+Form F      :       0.00u       0.00s       0.00w     34 calls
+DIIS        :       0.02u       0.02s       0.00w     34 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     34 calls
+Form C      :       0.00u       0.00s       0.00w     34 calls
+Form D      :       0.00u       0.00s       0.00w     34 calls
+DIISManager::extrapolate:       0.02u       0.02s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.02u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     30 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.05u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.02u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.02u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.02u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.02u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.02u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Wed Jan  7 23:50:14 2015
+Timers Off: Wed Jan  7 23:50:16 2015
+
+Wall Time:        2.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.13u       0.00s       0.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.00s       0.00w      4 calls
+Form S/X    :       0.02u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.05u       0.00s       0.00w     34 calls
+JK: D       :       0.00u       0.00s       0.00w     34 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     34 calls
+JK: JK      :       0.05u       0.00s       0.00w     34 calls
+JK: J       :       0.02u       0.00s       0.00w     34 calls
+JK: J1      :       0.02u       0.00s       0.00w     34 calls
+JK: J2      :       0.00u       0.00s       0.00w     34 calls
+JK: K       :       0.03u       0.00s       0.00w     34 calls
+JK: K1      :       0.03u       0.00s       0.00w     34 calls
+JK: K2      :       0.00u       0.00s       0.00w     34 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     34 calls
+Form F      :       0.00u       0.00s       0.00w     34 calls
+DIIS        :       0.00u       0.02s       0.00w     34 calls
+DIISManager::add_entry:       0.00u       0.02s       0.00w     34 calls
+Form C      :       0.00u       0.00s       0.00w     34 calls
+Form D      :       0.00u       0.00s       0.00w     34 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     30 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 (A|mn):       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.03u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.03u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.00s       0.00w      2 calls
+trans_ints  :       0.00u       0.00s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.00s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.00u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Thu Jan  8 00:09:23 2015
+Timers Off: Thu Jan  8 00:09:28 2015
+
+Wall Time:        5.00 seconds
+
+JK: (A|mn)  :       0.10u       0.00s       0.00w      4 calls
+JK: (A|Q)^-1/2:       0.50u       0.00s       1.00w      4 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      4 calls
+Form H      :       0.00u       0.03s       0.00w      4 calls
+Form S/X    :       0.00u       0.00s       0.00w      4 calls
+Guess       :       0.00u       0.00s       0.00w      4 calls
+Form G      :       0.08u       0.02s       0.00w     34 calls
+JK: D       :       0.00u       0.00s       0.00w     34 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w     34 calls
+JK: JK      :       0.08u       0.02s       0.00w     34 calls
+JK: J       :       0.02u       0.00s       0.00w     34 calls
+JK: J1      :       0.00u       0.00s       0.00w     34 calls
+JK: J2      :       0.02u       0.00s       0.00w     34 calls
+JK: K       :       0.07u       0.02s       0.00w     34 calls
+JK: K1      :       0.07u       0.00s       0.00w     34 calls
+JK: K2      :       0.00u       0.02s       0.00w     34 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w     34 calls
+Form F      :       0.00u       0.00s       0.00w     34 calls
+DIIS        :       0.00u       0.00s       0.00w     34 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     34 calls
+Form C      :       0.05u       0.00s       0.00w     34 calls
+Form D      :       0.00u       0.00s       0.00w     34 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     30 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     30 calls
+DFMP2 Singles:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia   :       0.15u       0.00s       1.00w      1 call
+DFMP2 (A|mn):       0.02u       0.00s       1.00w      1 call
+DFMP2 (A|mn)C_mi:       0.00u       0.00s       0.00w      1 call
+DFMP2 (A|mi)C_na:       0.00u       0.00s       0.00w      1 call
+DFMP2 Aia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia   :       0.10u       0.00s       0.00w      1 call
+DFMP2 Metric:       0.10u       0.00s       0.00w      1 call
+DFMP2 Aia Read:       0.00u       0.00s       0.00w      1 call
+DFMP2 (Q|A)(A|ia):       0.00u       0.00s       0.00w      1 call
+DFMP2 Qia Write:       0.00u       0.00s       0.00w      1 call
+DFMP2 Energy:       0.00u       0.02s       0.00w      1 call
+DFMP2 Qia Read:       0.00u       0.02s       0.00w      2 calls
+trans_ints  :       0.00u       0.02s       0.00w      1 call
+Trans (OV|OV):       0.00u       0.02s       0.00w      1 call
+Sort chem -> phys:       0.00u       0.00s       0.00w      1 call
+Sort (OV|OV) -> <OO|VV>:       0.00u       0.00s       0.00w      1 call
+Trans OEI   :       0.00u       0.00s       0.00w      1 call
+Build Denominators:       0.00u       0.00s       0.00w      1 call
+T2(1)       :       0.02u       0.00s       0.00w      1 call
+MP2 Energy  :       0.00u       0.00s       0.00w      1 call
+
+***********************************************************
