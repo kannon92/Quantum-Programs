@@ -45,6 +45,9 @@ int read_options(std::string name, Options &options)
         /*- Whether to compute two-electron integrals -*/
         options.add_bool("DO_TEI", true);
         options.add_bool("DO_FTHF", false);
+        options.add_int("MAX_ITER", 50);
+        options.add_int("MAX_TEMP",1000);
+        options.add_int("TEMP_INCREMENT", 50);
     }
 
     return true;
@@ -210,8 +213,9 @@ void Scfclass::scf_iteration()
           }
        }
     } 
+    int iter = 0;
     if(options_.get_bool("DO_FTHF")==true){ 
-      frac_occupation(C,Eval,0);
+      D = frac_occupation(C,Eval,iter);
     }
     else{
       D->gemm('N','T',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
@@ -227,9 +231,14 @@ void Scfclass::scf_iteration()
     double nuc_rep = mol->nuclear_repulsion_energy();
     outfile->Printf("\nNuc Replusion = %20.12f", nuc_rep);
     outfile->Printf("\n 1st iteration = %20.12f", energy_old);
-    int iter = 0;
-    while(iter < 40)
+    int failiter = 0;
+    double delta = 0.0;
+    int maxiter = options_.get_int("MAX_ITER");
+    //while((fabs(delta) > 1e-6) && failiter < maxiter)
+    while(failiter <= maxiter)
     {
+        failiter++;
+        
         energy_old = energy_;
        
         for(int mu = 0; mu < nbf_; mu++){
@@ -242,7 +251,6 @@ void Scfclass::scf_iteration()
               }
            }
         }
-        if(iter==0){Fold->print();}
         Fnotrans->copy(Fold);
         Fold->transform(Shalf); 
         Evec->zero();
@@ -253,19 +261,30 @@ void Scfclass::scf_iteration()
 
       
         if(options_.get_bool("DO_FTHF")==true){
-          frac_occupation(C,Eval, iter);
+          D = frac_occupation(C,Eval, iter);
+          if(iter == 3000)
+          {
+             failiter = maxiter + 1;
+          }
+          else
+          {
+             D->gemm('n','t',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
+          }
+        } 
+        //If the temperature is zero, do not calculation anything
+        if(iter==3000)
+        {
+        
         }
         else{
-          D->gemm('n','t',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
+           FpH->copy(hMat_);
+           FpH->add(Fnotrans);
+           energy_ = D->vector_dot(FpH);
         }
-        
-        FpH->copy(hMat_);
-        FpH->add(Fnotrans);
-        energy_ = D->vector_dot(FpH);
    
         iter++;
-  
-        outfile->Printf("\n iter:%d  energy:%20.12f  total:%20.12f  error:%20.12f", iter, energy_, energy_ + nuc_rep, energy_ - energy_old);
+        delta = energy_ - energy_old;  
+        outfile->Printf("\n iter:%d  failiter:%d  energy:%20.12f  total:%20.12f  error:%20.12f", iter, failiter,energy_, energy_ + nuc_rep, energy_ - energy_old);
     }
     
    
@@ -275,9 +294,45 @@ double Scfclass::compute_energy()
 {
    return 0.0;
 }
-void Scfclass::frac_occupation(SharedMatrix C, SharedVector e,int iter)
-{
+boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C, SharedVector e,int &iter)
 
+{
+    //P_{uv} = \sum n_i C C
+    double T = 0.0;
+    boost::shared_ptr<Matrix> D(new Matrix("DFT", nbf_, nbf_));
+
+    //The maximum temperature.  High temperature should allow mixing between orbitals
+    T = options_.get_int("MAX_TEMP");
+    //The increment for decreasing temperature.  Borrowed from Scurseria fraction occupation convergence paper.  
+    int increment = options_.get_int("TEMP_INCREMENT"); 
+    T= T - iter*increment;
+
+    //Conversion from K to atomic temperature.  
+    T /=3.157746E5;
+    std::vector<double> ni;
+    //(HOMO + LUMO)/2
+    double ef = (e->get(nocc_) + e->get(nocc_ + 1))/2.0;
+    outfile->Printf("\n Iter: %d  T: %12.3f",iter,T * 3.157746E5);
+    for(int i = 0; i < e->dim(); i++){
+       //Fermi Dirac distribution - 1.0 / (1.0 + exp(\beta (e_i - ef))) 
+       double val = 1.0/(1.0 + exp(1.0/(0.999685*T)*(e->get(i) - ef)));
+       outfile->Printf("\n Orbital %d has an occupancy of %20.12f", i, val);
+       ni.push_back(val);
+    }
+    for(int mu = 0; mu < nbf_; mu++){
+       for(int nu = 0; nu < nbf_; nu++){
+          for(int i = 0; i < nbf_; i++){
+             D->add(mu,nu,ni[i]*C->get(mu,i)*C->get(nu,i)); 
+          }
+       }
+    }
+    if(T<= 0.00){
+      //Need this to end
+      iter = 3000; 
+      
+    }
+   
+    return D;
 
 }
 
