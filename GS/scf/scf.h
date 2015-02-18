@@ -17,7 +17,7 @@ protected:
       int nmo_;
       int nocc_;
       double compute_energy();
-      void frac_occupation(SharedMatrix, SharedVector, int);
+      boost::shared_ptr<Matrix> frac_occupation(SharedMatrix, SharedVector, int &iter, bool &t_done);
       double energy = 0.0;
 private:
 public:

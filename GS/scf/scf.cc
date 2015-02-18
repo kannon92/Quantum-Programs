@@ -30,6 +30,7 @@
 #include <libmints/vector.h>
 #include <libpsio/psio.h>
 #include "scf.h"
+#include <cmath>
 
 INIT_PLUGIN
 namespace psi{ namespace scf {
@@ -206,16 +207,10 @@ void Scfclass::scf_iteration()
     boost::shared_ptr<Matrix> D(new Matrix("D", nbf_,nbf_));
     boost::shared_ptr<Matrix> Dtest(new Matrix("Dtest", nbf_, nbf_));
    
-    for(int mu = 0; mu < nbf_; mu++){
-       for(int nu = 0; nu < nbf_; nu++){
-          for(int i = 0; i < nocc; i++){
-             Dtest->add(mu,nu,C->get(mu,i)*C->get(nu,i)); 
-          }
-       }
-    } 
     int iter = 0;
+    bool t_run = false;
     if(options_.get_bool("DO_FTHF")==true){ 
-      D = frac_occupation(C,Eval,iter);
+      D = frac_occupation(C,Eval,iter, t_run);
     }
     else{
       D->gemm('N','T',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
@@ -235,11 +230,13 @@ void Scfclass::scf_iteration()
     double delta = 0.0;
     int maxiter = options_.get_int("MAX_ITER");
     //while((fabs(delta) > 1e-6) && failiter < maxiter)
-    while(failiter <= maxiter)
+    bool t_done = false;
+    while(failiter <= maxiter && fabs(delta) > 1e-8)
     {
         failiter++;
         
         energy_old = energy_;
+        energy_ = 0.0;
        
         for(int mu = 0; mu < nbf_; mu++){
            for(int nu = 0; nu < nbf_; nu++){
@@ -261,26 +258,26 @@ void Scfclass::scf_iteration()
 
       
         if(options_.get_bool("DO_FTHF")==true){
-          D = frac_occupation(C,Eval, iter);
-          if(iter == 3000)
-          {
-             failiter = maxiter + 1;
-          }
-          else
-          {
-             D->gemm('n','t',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
-          }
-        } 
-        //If the temperature is zero, do not calculation anything
-        if(iter==3000)
-        {
-        
+          D = frac_occupation(C,Eval, iter, t_done);
+             if(t_done)
+             {
+                 failiter = maxiter + 1;
+             }
         }
-        else{
+        else
+        {
+             D->gemm('n','t',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
+        }
+        //If the temperature is zero, do not calculation anything
+        //if(iter!=3000)
+        //{
            FpH->copy(hMat_);
            FpH->add(Fnotrans);
            energy_ = D->vector_dot(FpH);
-        }
+        
+        //}
+        //else{
+        //}
    
         iter++;
         delta = energy_ - energy_old;  
@@ -294,7 +291,7 @@ double Scfclass::compute_energy()
 {
    return 0.0;
 }
-boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C, SharedVector e,int &iter)
+boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C, SharedVector e,int &iter, bool &tempdone)
 
 {
     //P_{uv} = \sum n_i C C
@@ -310,12 +307,16 @@ boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C, SharedVector
     //Conversion from K to atomic temperature.  
     T /=3.157746E5;
     std::vector<double> ni;
-    //(HOMO + LUMO)/2
-    double ef = (e->get(nocc_) + e->get(nocc_ + 1))/2.0;
-    outfile->Printf("\n Iter: %d  T: %12.3f",iter,T * 3.157746E5);
+
+    //(HOMO + LUMO)/2 - nocc_ = number of orbitals occupied.  But, indexing starts from zero with SharedVector
+
+    double ef = (e->get(nocc_ - 1) + e->get(nocc_))/2.0;
+
+    outfile->Printf("\n Iter: %d  T: %12.3f  val:%20.6f",iter,T * 3.157746E5, ef);
     for(int i = 0; i < e->dim(); i++){
        //Fermi Dirac distribution - 1.0 / (1.0 + exp(\beta (e_i - ef))) 
-       double val = 1.0/(1.0 + exp(1.0/(0.999685*T)*(e->get(i) - ef)));
+       double val = 1.0/(1.0 + exp(1.0/(0.99994*T)*(e->get(i) - ef)));
+
        outfile->Printf("\n Orbital %d has an occupancy of %20.12f", i, val);
        ni.push_back(val);
     }
@@ -326,10 +327,10 @@ boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C, SharedVector
           }
        }
     }
+    
     if(T<= 0.00){
       //Need this to end
-      iter = 3000; 
-      
+      bool tempdone= true;
     }
    
     return D;
