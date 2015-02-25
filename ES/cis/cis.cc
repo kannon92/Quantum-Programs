@@ -39,6 +39,8 @@ INIT_PLUGIN
 
 namespace psi{ namespace cis{
 
+void natural_orbitals(SharedMatrix matrix, boost::shared_ptr<Wavefunction> wfn);
+
 extern "C" int
 read_options(std::string name, Options &options)
 {
@@ -50,7 +52,6 @@ read_options(std::string name, Options &options)
 
     return true;
 }
-
 
 extern "C" PsiReturnType
 cis(Options &options)
@@ -73,12 +74,13 @@ cis(Options &options)
     int nmo     = wfn->nmo();
     //Assuming RHF reference
     int nocc = wfn->nalpha();
+    int nvir = nmo - nocc;
     int nsocc = 2 * nocc;
     int nso = 2 * nmo;
-    int nvir = nso - nsocc;
+    int nsvir = nso - nsocc;
     outfile->Printf("\nNocc:  %d  Nsocc: %d", nocc, nsocc);
     SharedVector motei(new Vector("MOTEI",nmo*nmo*nmo*nmo));
-    SharedMatrix Hcis(new Matrix("Hcis", nsocc * nvir, nsocc*nvir));
+    SharedMatrix Hcis(new Matrix("Hcis", nsocc * nsvir, nsocc*nsvir));
     SharedMatrix F(new Matrix("F", nmo,nmo));
     SharedMatrix FSO(new Matrix("FSO", 2*nmo,2*nmo));
     SharedMatrix Ca(new Matrix("Ca", nmo,nmo));
@@ -87,7 +89,7 @@ cis(Options &options)
     typedef boost::multi_array<double, 4> array_type;
     
     array_type sotei(boost::extents[nso][nso][nso][nso]);
-    array_type t2(boost::extents[nsocc][nsocc][nvir][nvir]);
+    array_type t2(boost::extents[nsocc][nsocc][nsvir][nsvir]);
     
     
     // For now, we'll just transform for closed shells and generate all integrals.  For more elaborate use of the
@@ -175,11 +177,11 @@ cis(Options &options)
     
     double mp2energy = 0.0;
     for(int i = 0; i < nsocc; i++){
-       for(int a = 0; a < nvir; a++){
+       for(int a = 0; a < nsvir; a++){
           for(int j = 0; j < nsocc; j++){
-             for(int b = 0; b < nvir; b++){
-                int ia = i*nvir + a;
-                int jb = j*nvir + b;
+             for(int b = 0; b < nsvir; b++){
+                int ia = i*nsvir + a;
+                int jb = j*nsvir + b;
                 val = FSO->get(a+nsocc,b+nsocc)*(i==j) - FSO->get(i,j)*(a==b) + sotei[a+nsocc][j][i][b+nsocc];
                 Hcis->set(ia,jb,val);
                 outfile->Printf("\n\n ia = %d  jb = %d\t val = %20.12f", ia, jb,val);
@@ -193,13 +195,44 @@ cis(Options &options)
     }
     outfile->Printf("\n\n\t MP2 energy = %20.12f", mp2energy);
     Hcis->print();
-    SharedMatrix Hevec(new Matrix("Hcis_evecs", nsocc*nvir, nsocc*nvir));
-    SharedVector Heval(new Vector("HCis_evals", nsocc*nvir));
+    SharedMatrix Hevec(new Matrix("Hcis_evecs", nsocc*nsvir, nsocc*nsvir));
+    SharedMatrix Hevec_s(new Matrix("Hcis_evecs", nocc*nvir, nocc*nvir));
+    SharedVector Heval(new Vector("HCis_evals", nsocc*nsvir));
+    SharedVector Heval_s(new Vector("Hcis_singlets", nocc*nvir));
    
     Hcis->diagonalize(Hevec, Heval);
-    Heval->print();
- 
+  
+    SharedMatrix H_sing(new Matrix("H_sing", nocc*nvir, nocc*nvir));
+    outfile->Printf("nocc = %d  nvir = %d", nocc, nvir);
+
+    for(int  i = 0; i < nocc; i++){
+       for(int j = 0; j < nocc; j++){
+          for(int a = 0; a < nvir; a++){
+             for(int b = 0; b < nvir; b++){
+                val = Fmo->get(a + nocc, b + nocc)*(i==j)
+                    - Fmo->get(i,j)*(a==b) 
+                    + 2.0 * motei->get(INDEX4(a+nocc,j,i,b+nocc))
+
+                    - motei->get(INDEX4(a + nocc, j, b + nocc, i));
+
+                outfile->Printf("\n i*nvir + a = %d  j*nvir + b = %d  val = %20.12f", i*nvir + a, j*nvir + b, val);
+                H_sing->set(i*nvir + a, j*nvir + b, val);
+        
+             }
+          }
+       }
+    } 
+    H_sing->print();
+    H_sing->diagonalize(Hevec_s, Heval_s);
+    natural_orbitals(Hevec_s, wfn);
     return Success;
+}
+void cis::natural_orbitals(SharedMatrix Hcis, boost::shared_ptr<Wavefunction> wfn)
+{
+    SharedMatrix Dens = wfn->Da();
+    
+    
+    Hcis->print();    
 }
 
 }} // End Namespaces
