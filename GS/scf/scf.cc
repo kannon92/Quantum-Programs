@@ -234,7 +234,7 @@ void Scfclass::scf_iteration()
     //This is used as a flag to state that T = 0 and ends iterations
     bool t_done = false;
     //Have not figured out why this loop doesn't work
-    while(std::fabs(delta) > 1e-12)
+    while(failiter < maxiter && std::fabs(delta) > 1e-8)
     {
         failiter++;
         
@@ -264,6 +264,7 @@ void Scfclass::scf_iteration()
           D = frac_occupation(C,Eval, iter, t_done);
              if(t_done)
              {
+                 outfile->Printf("\nI am here on %d\n", iter);
                  failiter = maxiter + 1;
              }
         }
@@ -272,15 +273,16 @@ void Scfclass::scf_iteration()
              D->gemm('n','t',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
         }
         //If the temperature is zero, do not calculation anything
-        //if(iter!=3000)
-        //{
+        if(!t_done)
+        {
            FpH->copy(hMat_);
            FpH->add(Fnotrans);
            energy_ = D->vector_dot(FpH);
-        
-        //}
-        //else{
-        //}
+        }
+        else{
+           outfile->Printf("\n Temperature is at 0.  I am taking a vacation \n");
+           energy_ = D->vector_dot(FpH);
+        }
    
         iter++;
         delta = energy_ - energy_old;  
@@ -333,7 +335,7 @@ boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C, SharedVector
     
     if(T<= 0.00){
       //Need this to end
-      bool tempdone= true;
+      tempdone= true;
     }
    
     return D;
