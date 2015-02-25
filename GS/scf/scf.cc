@@ -227,14 +227,14 @@ void Scfclass::scf_iteration()
     outfile->Printf("\nNuc Replusion = %20.12f", nuc_rep);
     outfile->Printf("\n 1st iteration = %20.12f", energy_old);
     int failiter = 0;
-    double delta = 0.0;
+    double delta = energy_old;
     int maxiter = options_.get_int("MAX_ITER");
     //while((fabs(delta) > 1e-6) && failiter < maxiter)
  
     //This is used as a flag to state that T = 0 and ends iterations
     bool t_done = false;
     //Have not figured out why this loop doesn't work
-    while((failiter <= maxiter) && (fabs(delta) > 1e-8))
+    while(std::fabs(delta) > 1e-12)
     {
         failiter++;
         
