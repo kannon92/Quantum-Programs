@@ -16,6 +16,7 @@ protected:
       SharedMatrix sMat_;
       //A standard vector that stores the tei in an array of size nmo^4
       std::vector<double> teiV_;
+      std::vector<double> eps_;
      
       //General variables for use in SCF code
       int nbf_;
@@ -24,7 +25,10 @@ protected:
       int nocc_;
       double compute_energy();
       //If FTHF, computes the density via n_i C C^T but sum is over all ao.  
-      boost::shared_ptr<Matrix> frac_occupation(SharedMatrix, SharedVector, int &iter, bool &t_done);
+      boost::shared_ptr<Matrix> frac_occupation(SharedMatrix,int &iter, bool &t_done);
+      double bisection(std::vector<double>&, double T);
+      //The fermi level (n_i = N - solved using bisection method)
+      double ef_ = 0.0;
       double energy = 0.0;
 private:
 public:
