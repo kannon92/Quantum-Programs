@@ -77,7 +77,6 @@ PsiReturnType dfmp2(Options &options)
     SharedMatrix Caocc = wfn->Ca_subset("AO", "ACTIVE_OCC");
     SharedMatrix Cavir = wfn->Ca_subset("AO", "ACTIVE_VIR");
 
-    Cavir->print();
     int naocc = Caocc->colspi()[0];
     int navir = Cavir->colspi()[0];
     int maxQ  = ribasis->max_function_per_shell();
@@ -98,7 +97,6 @@ PsiReturnType dfmp2(Options &options)
     SharedMatrix AiaM(new Matrix("Aia", naux, navir*naocc)); 
     // N.B. This should be called after the basis has been built, because the geometry has not been
     // fully initialized until this time.
-    molecule->print();
     double nucrep = molecule->nuclear_repulsion_energy();
     outfile->Printf( "\n    Nuclear repulsion energy: %16.8f\n\n", nucrep);
 
@@ -132,20 +130,16 @@ PsiReturnType dfmp2(Options &options)
           }
        }
     }  
-    AmnM->print(); 
     AmiM->gemm('N','N', naux*nbfA, naocc, nbfA, 1.0, AmnM, nbfA, Caocc, naocc, 0.0, naocc);
-    AmiM->print();
 
     
     for(int A = 0; A < naux; A++){
        C_DGEMM('T','N',naocc, navir, nbfA, 1.0, AmiM->pointer()[A],naocc, Cavir->pointer()[0], navir, 0.0, AiaM->pointer()[A], navir);
     }
-    AiaM->print();
     
     boost::shared_ptr<FittingMetric> metric(new FittingMetric(ribasis, true));
     metric->form_eig_inverse(1.0E-10);
     SharedMatrix Jm12 = metric->get_metric();
-    Jm12->print();
     third Qia(boost::extents[naux][naocc][navir]);
     SharedMatrix QiaM(new Matrix("Qia", naux, naocc*navir));
 
@@ -166,11 +160,9 @@ PsiReturnType dfmp2(Options &options)
           }
        }
     }
-    QiaM->print();
     //outfile->Printf("Qia_sm[1][1][1] = %20.12f \ n Qia_bm[1][1][1] = %20.12f", QiaM->get(1,1*navir + 1), Qia[1][1][1]);
     //QiaM->zero();
     //QiaM->gemm('T','N', naux, naocc*navir, naux, 1.0, AiaM,naux, Jm12, naux,0.0,navir);
-    //QiaM->print();
      
     SharedVector eps_avir = wfn->epsilon_a_subset("AO", "ACTIVE_VIR"); 
     SharedVector eps_aocc = wfn->epsilon_a_subset("AO", "ACTIVE_OCC"); 
@@ -201,7 +193,6 @@ PsiReturnType dfmp2(Options &options)
           }
        }
     }
-    dfmo->print();
     outfile->Printf("\n\t MP2_energy = %20.12f", MP2_energy);
 
              
@@ -210,7 +201,6 @@ PsiReturnType dfmp2(Options &options)
     SharedMatrix C = wfn->Ca();
     boost::shared_ptr<DFTensor> DF(new DFTensor(aoBasis, ribasis, C, naocc, navir, naocc, navir, options));
     SharedMatrix Imo = DF->Idfmo();
-    Imo->print();
   
 
 

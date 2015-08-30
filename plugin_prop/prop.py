@@ -23,4 +23,5 @@ def run_prop(name, **kwargs):
 
 # Integration with driver routines
 procedures['energy']['prop'] = run_prop
-psi4.plugin_load('/Users/kevinhannon/Programs/PsiPlugins_psi4public/plugin_prop/plugin_prop.so')
+psi4.plugin_load('/Users/kevinhannon/Programs/Quantum_Programs/Quantum-Programs/plugin_prop/plugin_prop.so')
+

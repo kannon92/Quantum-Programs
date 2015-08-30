@@ -27,8 +27,8 @@ vmd_template = """#
 # Load the molecule and change the atom style/colors
 mol load cube CUBEFILE
 mol modcolor 0 0 Element
-#mol modstyle 0 0 Licorice 0.150000 50.000000 100.000000
-mol modstyle 0 0 CPK 1.100000 0.600000 50.000000 17.000000
+mol modstyle 0 0 Licorice 0.150000 50.000000 100.000000
+#mol modstyle 0 0 CPK 1.100000 0.600000 50.000000 17.000000
 color Element C silver
 color Element H white
 material change ambient Opaque 0.310000

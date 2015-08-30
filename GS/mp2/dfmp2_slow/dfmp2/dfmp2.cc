@@ -91,12 +91,12 @@ PsiReturnType dfmp2(Options &options)
     third pqA(boost::extents[naocc+navir][naocc+navir][naux]);
     third pqQ(boost::extents[naocc+navir][naocc+navir][naux]);
    
-    // The integral factory oversees the creation of integral objects
+    //// The integral factory oversees the creation of integral objects
     boost::shared_ptr<IntegralFactory> integral(new IntegralFactory
             (ribasis, BasisSet::zero_ao_basis_set(), aoBasis, aoBasis));
     boost::shared_ptr<TwoBodyAOInt> eri(integral->eri());
     const double *buffer = eri->buffer();
-    
+    //
     SharedMatrix AmnM(new Matrix("Amn", naux, nbfA*nbfA)); 
     SharedMatrix AmiM(new Matrix("Ami", naux, nbfA*naocc)); 
     SharedMatrix AiaM(new Matrix("Aia", naux, navir*naocc)); 
@@ -105,6 +105,12 @@ PsiReturnType dfmp2(Options &options)
     molecule->print();
     double nucrep = molecule->nuclear_repulsion_energy();
     outfile->Printf( "\n    Nuclear repulsion energy: %16.8f\n\n", nucrep);
+    boost::shared_ptr<DFTensor> DF(new DFTensor(aoBasis, ribasis, Ca, naocc, navir, naocc, navir, options)); 
+    SharedMatrix Imo= DF->Imo();
+    Imo->print_to_mathematica();
+    boost::shared_ptr<MintsHelper> mints(new MintsHelper());
+    SharedMatrix Iao = mints->ao_eri();
+    Iao->print_to_mathematica();
 
     // The matrix factory can create matrices of the correct dimensions...
 
@@ -201,12 +207,12 @@ PsiReturnType dfmp2(Options &options)
           }
        }
     }
-    //QiaM->print();
-         
-    //outfile->Printf("Qia_sm[1][1][1] = %20.12f \ n Qia_bm[1][1][1] = %20.12f", QiaM->get(1,1*navir + 1), Qia[1][1][1]);
-    //QiaM->zero();
-    //QiaM->gemm('T','N', 1.0, AiaM,Jm12,0.0);
-    //QiaM->print();
+    QiaM->print();
+       
+    outfile->Printf("Qia_sm[1][1][1] = %20.12f \ n Qia_bm[1][1][1] = %20.12f", QiaM->get(1,1*navir + 1), Qia[1][1][1]);
+    QiaM->zero();
+    QiaM->gemm('T','N', 1.0, AiaM,Jm12,0.0);
+    QiaM->print();
     
     fourth tei(boost::extents[naocc][navir][naocc][navir]);
    
@@ -237,8 +243,6 @@ PsiReturnType dfmp2(Options &options)
      }
     outfile->Printf("\nMP2_energy = %20.12f", MP2_energy);    
 
-    boost::shared_ptr<DFTensor> DF(new DFTensor(aoBasis, ribasis, Ca, naocc, navir, naocc, navir, options)); 
-    SharedMatrix Imo= DF->Idfmo();
     //SharedMatrix Imo= DF->Imo();
     //Imo->print();
     /*

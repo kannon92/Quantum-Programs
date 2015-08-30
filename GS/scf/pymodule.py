@@ -46,7 +46,7 @@ def run_scf(name, **kwargs):
     kwargs = p4util.kwargs_lower(kwargs)
 
     # Your plugin's psi4 run sequence goes here
-    psi4.set_global_option('BASIS', 'sto-3g')
+    #psi4.set_global_option('BASIS', 'sto-3g')
     psi4.set_local_option('SCF', 'PRINT', 1)
     scf_helper(name, **kwargs)
     returnvalue = psi4.plugin('scf.so')

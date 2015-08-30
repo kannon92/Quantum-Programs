@@ -49,6 +49,9 @@ int read_options(std::string name, Options &options)
         options.add_int("MAX_ITER", 50);
         options.add_int("MAX_TEMP",1000);
         options.add_int("TEMP_INCREMENT", 50);
+        options.add_bool("BISECT", true);
+        options.add_int("BISECT_ITER", 40);
+        options.add_bool("PRINT_EPS", true);
     }
 
     return true;
@@ -163,7 +166,7 @@ void Scfclass::scf_iteration()
     boost::shared_ptr<Wavefunction> wfn = Process::environment.wavefunction();
     int nocc = wfn->nalpha();
     nocc_ = nocc;
-    outfile->Printf("\n nocc = %d", nocc);
+
     boost::shared_ptr<Matrix> Evec(new Matrix("Evectors", nbf_, nbf_));
     boost::shared_ptr<Vector> Eval(new Vector("Evals", nbf_));
    
@@ -171,6 +174,7 @@ void Scfclass::scf_iteration()
     boost::shared_ptr<Matrix> Svec(new Matrix("Evectors", nbf_, nbf_));
     boost::shared_ptr<Vector> Sval(new Vector("Evals", nbf_));
     boost::shared_ptr<Matrix> SI(new Matrix("SI", nbf_, nbf_));
+
     sMat_->diagonalize(Svec,Sval);
     for(int mu = 0; mu < nbf_; mu++){
        for(int nu = 0; nu < nbf_; nu++){
@@ -178,7 +182,8 @@ void Scfclass::scf_iteration()
           SI->set(mu,nu,1.0/(sqrt(Sval->get(nu)))*factor);
        }
     }
-    SI->print();
+   // Shalf->transform(SI,Svec);
+
     for(int mu = 0; mu < nbf_; mu++){
        for(int nu = 0; nu < nbf_; nu++){
           for(int l = 0; l < nbf_; l++){
@@ -188,7 +193,6 @@ void Scfclass::scf_iteration()
           }
        } 
     } 
-    Shalf->print();
     
     boost::shared_ptr<Matrix> Fold(new Matrix("Fock", nbf_, nbf_));
     Fold->copy(hMat_);
@@ -214,12 +218,17 @@ void Scfclass::scf_iteration()
    
     int iter = 0;
     bool t_run = false;
+
+    // If finite temperature is enabled, calculate D 
     if(options_.get_bool("DO_FTHF")==true){ 
       D = frac_occupation(C,iter, t_run);
     }
     else{
       D->gemm('N','T',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
     }
+    SharedVector occupancy(new Vector("Occupancy", nbf_));
+    SharedMatrix Dvecs(new Matrix("Eigenvectors", nbf_, nbf_));
+    D->diagonalize(Dvecs, occupancy);
 
 
     boost::shared_ptr<Matrix> FpH(new Matrix("FpH", nbf_,nbf_)); 
@@ -262,7 +271,6 @@ void Scfclass::scf_iteration()
         Eval->zero();
 
         Fold->diagonalize(Evec,Eval);
-        Eval->print();
         C->zero();
         C->gemm(false,false, 1.0, Shalf, Evec,0.0);
         eps_.clear();
@@ -282,9 +290,12 @@ void Scfclass::scf_iteration()
         }
         else
         {
+             D->zero();
              D->gemm('n','t',nbf_,nbf_,nocc, 1.0,C, nbf_, C, nbf_, 0, nbf_, 0,0,0);
         }
-        //If the temperature is zero, do not calculation anything
+        occupancy->zero();
+        D->diagonalize(Dvecs, occupancy);
+ 
         if(!t_done)
         {
            FpH->copy(hMat_);
@@ -299,6 +310,16 @@ void Scfclass::scf_iteration()
         iter++;
         delta = energy_ - energy_old;  
         outfile->Printf("\n iter:%d  failiter:%d  energy:%20.12f  total:%20.12f  error:%20.12f", iter, failiter,energy_, energy_ + nuc_rep, energy_ - energy_old);
+    }
+    if(failiter >= maxiter){
+        outfile->Printf("\n CALCULATION FAILED \n");}
+    else{
+    outfile->Printf("\n FTHFEnergy = %12.6f", energy_ + nuc_rep);
+    }
+    for(int niocc = 0; niocc < fermidirac_.size(); niocc++)
+    {
+        outfile->Printf("\n FD_dis[%d] = %8.8f with %8.6f eig value", niocc, fermidirac_[niocc], eps_[niocc]);
+
     }
     
    
@@ -324,10 +345,37 @@ boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C,int &iter, bo
     //Conversion from K to atomic temperature.  
     T /=3.157746E5;
     std::vector<double> ni(nbf_);
+    double sumocc = 0.0;
 
-    ef_ = bisection(ni, T);
+    if(options_.get_bool("BISECT"))
+    {
+        ef_ = bisection(ni, T);
+    }
+    else
+    {
+        ef_ = (eps_[nocc_ - 1] + eps_[nocc_])/2.0;
+        if(T > 0.0000001)
+        {
+            for(int i = 0; i <ni.size(); i++){
+               //Fermi Dirac distribution - 1.0 / (1.0 + exp(\beta (e_i - ef))) 
+               ni[i] = 1.0/(1.0 + exp(1.0/(0.99994*T)*(eps_[i] - ef_)));
+            }
+        }
+        else
+        {
+            for(int i = 0; i < ni.size(); i++){
+                if(eps_[i] < ef_){
+                    ni[i] = 1.0;
+                }
+                else{
+                    ni[i] = 0.0;
+                }
 
-    outfile->Printf("\n Iter: %d  T: %12.3f  val:%20.6f",iter,T * 3.157746E5, ef_);
+            }
+        }
+    }
+
+    outfile->Printf("\n Iter: %d  T: %12.3f  val:%5.6f  sumni %6.5f",iter,T * 3.157746E5, ef_, sumocc);
     
     for(int mu = 0; mu < nbf_; mu++){
        for(int nu = 0; nu < nbf_; nu++){
@@ -337,24 +385,54 @@ boost::shared_ptr<Matrix> Scfclass::frac_occupation(SharedMatrix C,int &iter, bo
        }
     }
     
-   // if(T<= 0.00){
-   //   //Need this to end
+    if(T<= 0.00){
+   //   Need this to end
    //   tempdone= true;
-   // }
+    }
     double sum = 0.0;
     for(auto& ft : ni){
         sum+=ft;
     }
     outfile->Printf("\n ne = %6.4f\n", sum);
        
+    fermidirac_ = ni;
    
     return D;
 
 }
+
+double Scfclass::occ_vec(std::vector<double>& nibisect, double ef, double T)
+{
+    double sum = 0.0;
+    if(T > 0.0000000001)
+    {
+        for(int i = 0; i <nibisect.size(); i++){
+           //Fermi Dirac distribution - 1.0 / (1.0 + exp(\beta (e_i - ef))) 
+           nibisect[i] = 1.0/(1.0 + exp(1.0/(0.99994*T)*(eps_[i] - ef)));
+           sum+=nibisect[i];
+        }
+    }
+    else
+    {
+        double ef_noT = (eps_[nocc_ - 1] + eps_[nocc_])/2.0;
+        for(int i = 0; i < nibisect.size(); i++){
+            if(eps_[i] < ef_noT){
+                nibisect[i] = 1.0;
+                sum+=nibisect[i];
+            }
+            else{
+                nibisect[i] = 0.0;
+            }
+
+        }
+    }
+
+    return sum;
+}
 double Scfclass::bisection(std::vector<double>& ni, double T)
 {
-    double ef1 = eps_[nocc_];
-    double ef2 = eps_[nocc_ + 1];
+    double ef1 = eps_[0];
+    double ef2 = eps_[eps_.size() - 1];
 
     std::vector<double> nibisect;
     
@@ -363,41 +441,30 @@ double Scfclass::bisection(std::vector<double>& ni, double T)
     int iter = 0.0;
     double ef = 0.0;
     outfile->Printf("\n In Bisection function HOMO = %6.3f  LUMO = %6.3f\n", ef1, ef2);
-    while(iter < 15)
+    while(iter < options_.get_int("BISECT_ITER"))
     {
         ef = ef1 + (ef2 - ef1)/2.0;
         outfile->Printf("\n %6.5f = (%6.5f + %6.5f)/2.0", ef, ef1, ef2);
 
         sum = 0.0;
-        for(int i = 0; i <nibisect.size(); i++){
-           //Fermi Dirac distribution - 1.0 / (1.0 + exp(\beta (e_i - ef))) 
-           nibisect[i] = 1.0/(1.0 + exp(1.0/(0.99994*T)*(eps_[i] - ef)));
-           sum+=nibisect[i];
-        }
+        sum = occ_vec(nibisect, ef, T);
 
         outfile->Printf("\n sum -  nocc_ = %6.8f", sum - nocc_);
-        if(std::fabs((sum - nocc_)) < 1e-8 || std::fabs(ef2 - ef1)/2.0 < 1e-8)
+        if(std::fabs((sum - nocc_)) < 1e-8 || std::fabs(ef2 - ef1)/2.0 < 1e-16)
         {
-            iter = 20;
-
+             break;
         }
 
         outfile->Printf("\n On Iteration in Bisection %d", iter);
         iter++;   
         //f(ef)
         sumef = 0.0; 
-        for(int i = 0; i <nibisect.size(); i++){
-           nibisect[i] = 1.0/(1.0 + exp(1.0/(0.99994*T)*(eps_[i] - ef)));
-           sumef+=nibisect[i];
-        }
+        sumef = occ_vec(nibisect, ef, T);
 
         sumef1 = 0.0;
+        sumef1 = occ_vec(nibisect, ef1, T);
 
-        for(int i = 0; i <nibisect.size(); i++){
-           nibisect[i] = 1.0/(1.0 + exp(1.0/(0.99994*T)*(eps_[i] - ef1)));
-           sumef1+=nibisect[i];
-        }
-        auto sign = [](double a, double b) {return a*b > 1e-8; };
+        auto sign = [](double a, double b) {return a * b > 0; };
         outfile->Printf("\n a: %6.5f  b:%6.5f\n", (sumef - nocc_), (sumef1 - nocc_));
         if(sign((sumef - nocc_), (sumef1 - nocc_)) == true)
         {
@@ -412,9 +479,11 @@ double Scfclass::bisection(std::vector<double>& ni, double T)
       
     sumef = 0.0;
     ni = nibisect;
+    int count = 0;
     for(auto occupancy: nibisect){
        sumef+=occupancy; 
-       outfile->Printf("\n occupancy[%d]=%6.4f", &occupancy, occupancy);
+       count++;
+ //      outfile->Printf("\n occupancy[%d]=%10.10f", count, occupancy);
     }
 
     outfile->Printf("\n ef = %6.5f sum = %6.5f \n", ef, sumef);

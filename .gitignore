@@ -1,0 +1,21 @@
+*.o
+*.d
+*.so
+*.pyc
+Makefile.*
+Makefile
+*~
+
+# Qt Creator project files
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+
+# All outputs and clean files in test cases
+/tests/*/output.dat
+/tests/*/*.clean
+/tests/*/*.txt
+/tests/*/*.plt
+/tests/*/timer.dat

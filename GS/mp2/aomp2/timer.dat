@@ -34,3 +34,75 @@ DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0
 DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     12 calls
 
 ***********************************************************
+
+Host: Kevins-MacBook-Pro-2.local
+
+Timers On : Sun Aug 30 14:39:00 2015
+Timers Off: Sun Aug 30 14:39:01 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      1 call
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      1 call
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      1 call
+Form H      :       0.00u       0.00s       0.00w      1 call
+Form S/X    :       0.00u       0.00s       0.00w      1 call
+Guess       :       0.00u       0.00s       0.00w      1 call
+Form G      :       0.00u       0.00s       0.00w     13 calls
+JK: D       :       0.00u       0.00s       0.00w     13 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w      8 calls
+JK: JK      :       0.00u       0.00s       0.00w     13 calls
+JK: J       :       0.00u       0.00s       0.00w      8 calls
+JK: J1      :       0.00u       0.00s       0.00w      8 calls
+JK: J2      :       0.00u       0.00s       0.00w      8 calls
+JK: K       :       0.00u       0.00s       0.00w      8 calls
+JK: K1      :       0.00u       0.00s       0.00w      8 calls
+JK: K2      :       0.00u       0.00s       0.00w      8 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w      8 calls
+Form F      :       0.00u       0.00s       0.00w     13 calls
+DIIS        :       0.00u       0.00s       0.00w     13 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     13 calls
+Form C      :       0.00u       0.00s       0.00w     13 calls
+Form D      :       0.00u       0.00s       0.00w     13 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     12 calls
+
+***********************************************************
+
+Host: Kevins-MacBook-Pro-2.local
+
+Timers On : Sun Aug 30 14:39:33 2015
+Timers Off: Sun Aug 30 14:39:34 2015
+
+Wall Time:        1.00 seconds
+
+JK: (A|mn)  :       0.02u       0.00s       0.00w      1 call
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      1 call
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      1 call
+Form H      :       0.00u       0.00s       0.00w      1 call
+Form S/X    :       0.00u       0.00s       0.00w      1 call
+Guess       :       0.00u       0.00s       0.00w      1 call
+Form G      :       0.00u       0.00s       0.00w     13 calls
+JK: D       :       0.00u       0.00s       0.00w     13 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w      8 calls
+JK: JK      :       0.00u       0.00s       0.00w     13 calls
+JK: J       :       0.00u       0.00s       0.00w      8 calls
+JK: J1      :       0.00u       0.00s       0.00w      8 calls
+JK: J2      :       0.00u       0.00s       0.00w      8 calls
+JK: K       :       0.00u       0.00s       0.00w      8 calls
+JK: K1      :       0.00u       0.00s       0.00w      8 calls
+JK: K2      :       0.00u       0.00s       0.00w      8 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w      8 calls
+Form F      :       0.00u       0.00s       0.00w     13 calls
+DIIS        :       0.02u       0.00s       0.00w     13 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     13 calls
+Form C      :       0.00u       0.00s       0.00w     13 calls
+Form D      :       0.00u       0.00s       0.00w     13 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     12 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     12 calls
+
+***********************************************************

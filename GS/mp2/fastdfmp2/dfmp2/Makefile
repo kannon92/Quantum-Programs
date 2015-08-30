@@ -35,11 +35,12 @@ NAME = $(shell basename `pwd`)
 CXXSRC = $(notdir $(wildcard *.cc))
 
 # Flags that were used to compile Psi4.
-CXX = /usr/bin/llvm-g++
+CXX = /usr/bin/g++
 CXXDEFS = -DFC_SYMBOL=2 -DHAVE_SYSTEM_NATIVE_LAPACK -DHAVE_SYSTEM_NATIVE_BLAS -DHAS_CXX11_VARIADIC_TEMPLATES -DHAS_CXX11_STATIC_ASSERT -DHAS_CXX11_SIZEOF_MEMBER -DHAS_CXX11_RVALUE_REFERENCES -DHAS_CXX11_LIB_REGEX -DHAS_CXX11_NULLPTR -DHAS_CXX11_LONG_LONG -DHAS_CXX11_LAMBDA -DHAS_CXX11_INITIALIZER_LIST -DHAS_CXX11_DECLTYPE -DHAS_CXX11_CSTDINT_H -DHAS_CXX11_CONSTEXPR -DHAS_CXX11_AUTO_RET_TYPE -DHAS_CXX11_AUTO -DHAS_CXX11_FUNC -DHAS_CXX11 -DVAR_MFDS -DSYS_DARWIN
 CXXFLAGS = -DRESTRICT=__restrict__ -fPIC -std=c++11 -O3 -DNDEBUG -Wno-unused
-INCLUDES = -I/Users/kevinhannon/Programs/psi4cmake/psi4/obj/src/lib -I/Users/kevinhannon/Programs/psi4cmake/psi4/src/lib -I/Users/kevinhannon/Programs/psi4cmake/psi4/include -I/Users/kevinhannon/Programs/psi4cmake/psi4/obj/include -I/Users/kevinhannon/Programs/psi4cmake/psi4/obj/boost/include -I/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include
-OBJDIR = /Users/kevinhannon/Programs/psi4cmake/psi4/obj
+LDFLAGS = -Wl,-search_paths_first -Wl,-headerpad_max_install_names
+INCLUDES = -I/Users/kevinhannon/Programs/psi4cmake/psi4public/objdir/src/lib -I/Users/kevinhannon/Programs/psi4cmake/psi4public/src/lib -I/Users/kevinhannon/Programs/psi4cmake/psi4public/include -I/Users/kevinhannon/Programs/psi4cmake/psi4public/objdir/include -I/usr/local/include -I/System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6 -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include
+OBJDIR = /Users/kevinhannon/Programs/psi4cmake/psi4public/objdir
 
 # Used to determine linking flags.
 UNAME = $(shell uname)
@@ -56,10 +57,10 @@ default:: $(PSITARGET)
 
 # Add the flags needed for shared library creation
 ifeq ($(UNAME), Linux)
-    LDFLAGS = -shared
+    LDFLAGS += -shared
 endif
 ifeq ($(UNAME), Darwin)
-    LDFLAGS = -shared -undefined dynamic_lookup
+    LDFLAGS += -shared -undefined dynamic_lookup
     CXXFLAGS += -fno-common
 endif
 
@@ -75,5 +76,4 @@ $(PSITARGET): $(BINOBJ)
 # Erase all compiled intermediate files
 clean:
 	rm -f $(BINOBJ) $(PSITARGET) *.d *.pyc *.test output.dat psi.timer.dat
-
 

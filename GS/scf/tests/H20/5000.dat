@@ -1,0 +1,36 @@
+
+# PYTHONPATH must include directory above plugin directory.
+#     Define either externally or here, then import plugin.
+sys.path.insert(0, '/Users/kevinhannon/Programs/Quantum_Programs/Quantum-Programs/GS/')
+import scf
+
+molecule {
+0 1
+H
+O 1 1.2
+H 2 1.2 1 104.5
+symmetry c1
+units angstrom
+}
+
+
+set {
+  basis cc-pvdz
+  reference rhf
+  scf_type  pk
+}
+
+set scf {
+  print 1
+  DO_FTHF true
+  MAX_ITER 200
+  MAX_TEMP 5000
+  TEMP_INCREMENT 0
+  bisect  true
+  bisect_iter  40
+}
+energy('rhf')
+energy('scf')
+
+scf.exampleFN()
+

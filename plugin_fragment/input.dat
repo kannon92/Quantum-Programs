@@ -4,7 +4,7 @@
 
 
 # Path to plugin_prop.so
-objdir = '/Users/kevinhannon/Programs/PsiPlugins_psi4public/plugin_prop'
+objdir = '/Users/kevinhannon/Programs/Quantum_Programs/Quantum-Programs/plugin_prop'
 # Path to data directory
 datadir = 'data/'
 
@@ -49,15 +49,15 @@ units angstrom
 
 
 set {
-  basis sto-3g
+  basis 6-31g
   r_convergence 1e-12
   d_convergence 1e-12
   LocalCut  0.02
   reference rhf
   SCF_type PK
-#  property_filepath 'data'
-#  property_tasks ['ORBITALS']
-#  property_orbitals [] #1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33]
+  property_filepath 'data'
+  property_tasks ['ORBITALS']
+  property_orbitals [] #1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33]
   freeze_core false
 }
 
@@ -71,6 +71,6 @@ energy('plugin_fragment')
 #print cc2
 #print scf
 #cc2newH = energy('conv-mp2')
-#energy('prop')
+energy('prop')
 #plugin_local.exampleFN()
 

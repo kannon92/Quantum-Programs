@@ -32,9 +32,9 @@ private:
 
 
 public:
-    ao_class(Options& options);
+    ao_class();
     void common_init();
-    void begin();
+    void compute_mp2();
 
 
 };
@@ -44,7 +44,7 @@ private:
     boost::shared_ptr<Matrix> integrals_;
     
 public:
-    conventional_integrals(Options& options);
+    conventional_integrals();
 };
 
 class df_integrals
@@ -54,14 +54,14 @@ private:
     boost::shared_ptr<BasisSet> auxiliary_;
     boost::shared_ptr<Matrix> uvQ_;
 public:
-    df_integrals(Options& options);
+    df_integrals();
 };
 class cholesky_integrals
 {
 private:
     boost::shared_ptr<Matrix> L_;
 public:
-    cholesky_integrals(Options& options);
+    cholesky_integrals();
 };
 
 }}

@@ -54,8 +54,8 @@ PsiReturnType aomp2(Options& options)
     int print = options.get_int("PRINT");
 
     boost::shared_ptr<ao_class> aoclass
-        (new ao_class(options));
-    aoclass->begin();
+        (new ao_class());
+    aoclass->compute_mp2();
     /* Your code goes here */
 
     return Success;

@@ -1,0 +1,36 @@
+
+Host: Kevins-MacBook-Pro.local
+
+Timers On : Fri Apr 10 18:02:13 2015
+Timers Off: Fri Apr 10 18:02:13 2015
+
+Wall Time:        0.00 seconds
+
+JK: (A|mn)  :       0.00u       0.00s       0.00w      2 calls
+JK: (A|Q)^-1/2:       0.05u       0.00s       0.00w      2 calls
+JK: (Q|mn)  :       0.00u       0.00s       0.00w      2 calls
+Form H      :       0.00u       0.00s       0.00w      2 calls
+Form S/X    :       0.00u       0.00s       0.00w      2 calls
+Guess       :       0.00u       0.00s       0.00w      2 calls
+Form G      :       0.03u       0.00s       0.00w     15 calls
+JK: D       :       0.00u       0.00s       0.00w     15 calls
+JK: USO2AO  :       0.00u       0.00s       0.00w      9 calls
+JK: JK      :       0.03u       0.00s       0.00w     15 calls
+JK: J       :       0.00u       0.00s       0.00w      9 calls
+JK: J1      :       0.00u       0.00s       0.00w      9 calls
+JK: J2      :       0.00u       0.00s       0.00w      9 calls
+JK: K       :       0.00u       0.00s       0.00w      9 calls
+JK: K1      :       0.00u       0.00s       0.00w      9 calls
+JK: K2      :       0.00u       0.00s       0.00w      9 calls
+JK: AO2USO  :       0.00u       0.00s       0.00w      9 calls
+Form F      :       0.00u       0.00s       0.00w     15 calls
+DIIS        :       0.00u       0.00s       0.00w     15 calls
+DIISManager::add_entry:       0.00u       0.00s       0.00w     15 calls
+Form C      :       0.00u       0.00s       0.00w     15 calls
+Form D      :       0.00u       0.00s       0.00w     15 calls
+DIISManager::extrapolate:       0.00u       0.00s       0.00w     13 calls
+DIISManager::extrapolate: bMatrix setup:       0.00u       0.00s       0.00w     13 calls
+DIISManager::extrapolate: bMatrix pseudoinverse:       0.00u       0.00s       0.00w     13 calls
+DIISManager::extrapolate: form new data:       0.00u       0.00s       0.00w     13 calls
+
+***********************************************************

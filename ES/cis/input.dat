@@ -14,7 +14,7 @@ symmetry c1
 }
 
 set {
-  basis DZ
+  basis sto-3g
   freeze_core false
   scf_type pk
   D_CONVERGENCE 1.0e-14

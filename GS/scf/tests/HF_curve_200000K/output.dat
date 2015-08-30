@@ -1,0 +1,64 @@
+    -----------------------------------------------------------------------
+          PSI4: An Open-Source Ab Initio Electronic Structure Package
+                              PSI 4.0 Driver
+
+               Git: Rev {master} 556e8139d3cfa1f96ccffe2cdf22cc56a185d2b2
+
+    J. M. Turney, A. C. Simmonett, R. M. Parrish, E. G. Hohenstein,
+    F. A. Evangelista, J. T. Fermann, B. J. Mintz, L. A. Burns, J. J. Wilke,
+    M. L. Abrams, N. J. Russ, M. L. Leininger, C. L. Janssen, E. T. Seidl,
+    W. D. Allen, H. F. Schaefer, R. A. King, E. F. Valeev, C. D. Sherrill,
+    and T. D. Crawford, WIREs Comput. Mol. Sci. 2, 556-565 (2012)
+    (doi: 10.1002/wcms.93)
+
+                         Additional Contributions by
+    A. E. DePrince, M. Saitow, U. Bozkaya, A. Yu. Sokolov
+    -----------------------------------------------------------------------
+
+    Process ID:   8746
+    PSI4DATADIR: /Users/kevinhannon/Programs/psi4cmake/psi4/lib
+    Memory level set to 256.000 MB
+
+  ==> Input File <==
+
+--------------------------------------------------------------------------
+
+# PYTHONPATH must include directory above plugin directory.
+#     Define either externally or here, then import plugin.
+sys.path.insert(0, '/Users/kevinhannon/Programs/Quantum_Programs/Quantum-Programs/GS/')
+import scf
+
+molecule {
+0 1
+H
+F 1 HF_curve_200000K
+symmetry c1
+units angstrom
+}
+
+
+set {
+  basis cc-pvdz
+  reference rhf
+  scf_type  pk
+}
+
+set scf {
+  print 1
+  DO_FTHF true
+  MAX_ITER 130
+  MAX_TEMP 20000
+  TEMP_INCREMENT 0
+  bisect  true
+  bisect_iter  40
+}
+energy('rhf')
+energy('scf')
+
+
+--------------------------------------------------------------------------
+
+*** tstart() called on Kevins-MacBook-Pro.local
+*** at Thu Apr  9 16:25:43 2015
+
+/Users/kevinhannon/Programs/Quantum_Programs/Quantum-Programs/GS/scf/scf.so loaded.

@@ -16,9 +16,9 @@
     -----------------------------------------------------------------------
 
 
-    Psi4 started on: Sun Aug 30 14:29:50 2015
+    Psi4 started on: Sun Aug 30 14:39:33 2015
 
-    Process ID:  11085
+    Process ID:  11175
     PSI4DATADIR: /Users/kevinhannon/Programs/psi4private_clang/psi4/lib
     Memory level set to 256.000 MB
 
@@ -56,7 +56,7 @@ aomp2.exampleFN()
 /Users/kevinhannon/Programs/Quantum_Programs/Quantum-Programs/GS/mp2/aomp2/aomp2.so loaded.
 
 *** tstart() called on Kevins-MacBook-Pro-2.local
-*** at Sun Aug 30 14:29:50 2015
+*** at Sun Aug 30 14:39:33 2015
 
     There are an even number of electrons - assuming singlet.
     Specify the multiplicity with the MULTP option in the
@@ -169,10 +169,10 @@ aomp2.exampleFN()
    @DF-RHF iter   2:   -74.93960879032679   -1.74222e+00   1.91065e-02 DIIS
    @DF-RHF iter   3:   -74.94506296571663   -5.45418e-03   4.48024e-03 DIIS
    @DF-RHF iter   4:   -74.94548880700339   -4.25841e-04   8.43708e-04 DIIS
-   @DF-RHF iter   5:   -74.94550894504493   -2.01380e-05   1.60371e-04 DIIS
-   @DF-RHF iter   6:   -74.94550961905338   -6.74008e-07   1.07631e-05 DIIS
-   @DF-RHF iter   7:   -74.94550962084472   -1.79134e-09   4.98974e-08 DIIS
-   @DF-RHF iter   8:   -74.94550962084475   -2.84217e-14   5.06879e-10 DIIS
+   @DF-RHF iter   5:   -74.94550894504496   -2.01380e-05   1.60371e-04 DIIS
+   @DF-RHF iter   6:   -74.94550961905341   -6.74008e-07   1.07631e-05 DIIS
+   @DF-RHF iter   7:   -74.94550962084472   -1.79131e-09   4.98974e-08 DIIS
+   @DF-RHF iter   8:   -74.94550962084475   -2.84217e-14   5.06878e-10 DIIS
 
   DF guess converged.
 
@@ -210,10 +210,10 @@ aomp2.exampleFN()
     Schwarz Cutoff:          1E-12
 
    @RHF iter   9:   -74.94502100966506    4.88611e-04   2.06936e-05 DIIS
-   @RHF iter  10:   -74.94502101050821   -8.43158e-10   1.26987e-06 DIIS
-   @RHF iter  11:   -74.94502101053371   -2.54943e-11   3.82451e-07 DIIS
-   @RHF iter  12:   -74.94502101053803   -4.32010e-12   5.58465e-08 DIIS
-   @RHF iter  13:   -74.94502101053811   -8.52651e-14   3.73940e-09 DIIS
+   @RHF iter  10:   -74.94502101050824   -8.43187e-10   1.26987e-06 DIIS
+   @RHF iter  11:   -74.94502101053371   -2.54659e-11   3.82451e-07 DIIS
+   @RHF iter  12:   -74.94502101053800   -4.29168e-12   5.58465e-08 DIIS
+   @RHF iter  13:   -74.94502101053811   -1.13687e-13   3.73940e-09 DIIS
 
   ==> Post-Iterations <==
 
@@ -240,8 +240,8 @@ aomp2.exampleFN()
    => Energetics <=
 
     Nuclear Repulsion Energy =              9.7794061444134073
-    One-Electron Energy =                -123.3639077668480724
-    Two-Electron Energy =                  38.6394806118965448
+    One-Electron Energy =                -123.3639077668481008
+    Two-Electron Energy =                  38.6394806118965732
     DFT Exchange-Correlation Energy =       0.0000000000000000
     Empirical Dispersion Energy =           0.0000000000000000
     PCM Polarization Energy =               0.0000000000000000
@@ -271,13 +271,13 @@ Properties computed using the SCF density matrix
 
   Saving occupied orbitals to File 180.
 
-*** tstop() called on Kevins-MacBook-Pro-2.local at Sun Aug 30 14:29:51 2015
+*** tstop() called on Kevins-MacBook-Pro-2.local at Sun Aug 30 14:39:34 2015
 Module time:
-	user time   =       0.35 seconds =       0.01 minutes
+	user time   =       0.36 seconds =       0.01 minutes
 	system time =       0.02 seconds =       0.00 minutes
 	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =       0.35 seconds =       0.01 minutes
+	user time   =       0.36 seconds =       0.01 minutes
 	system time =       0.02 seconds =       0.00 minutes
 	total time  =          1 seconds =       0.02 minutes
 Reading options from the AOMP2 block
@@ -297,3 +297,36 @@ Calling plugin aomp2.so.
       1:  0.6648269
       2:  0.8133140
 
+
+  ==> Laplace Denominator <==
+
+  This system has an intrinsic R = (E_HUMO - E_LOMO)/(E_LUMO - E_HOMO) of 1.9837E+01.
+  A 15 point minimax quadrature with R of 2E+01 will be used for the denominator.
+  The worst-case Chebyshev norm for this quadrature rule is 6.9720E-15.
+  Quadrature rule read from file /Users/kevinhannon/Programs/psi4private_clang/psi4/lib/quadratures/1_x/1_xk15_2E1.
+
+  ## Occupied Laplace Delta Tensor (Symmetry 0) ##
+  Irrep: 1 Size: 15 x 5
+
+                 1                   2                   3                   4                   5
+
+    1     0.31392718065180     0.35354408723847     0.35499197153018     0.35541357923724     0.35555614003912
+    2     0.22511442080127     0.42353616022857     0.43284231245269     0.43558314405111     0.43651309980389
+    3     0.09230567648990     0.44811750043128     0.47313825778110     0.48066324535705     0.48323265105821
+    4     0.02194412643352     0.44462884750558     0.49309708183559     0.50813895796002     0.51332413926622
+    5     0.00284052258899     0.41882140994255     0.49728449427759     0.52271318258736     0.53159535103299
+    6     0.00017841903355     0.37439083225334     0.48703475147790     0.52569791112657     0.53944286669791
+    7     0.00000455287360     0.31515387033589     0.46235050405067     0.51678716945804     0.53659223316887
+    8     0.00000003639158     0.24616601704327     0.42277534069842     0.49468011573707     0.52164138460314
+    9     0.00000000006297     0.17440622457108     0.36836090159176     0.45769582831040     0.49253720776286
+   10     0.00000000000001     0.10847324077569     0.30094322646017     0.40475164555324     0.44737692027620
+   11     0.00000000000000     0.05656243125396     0.22535551399315     0.33668228016641     0.38559217130432
+   12     0.00000000000000     0.02314890688471     0.14973798877485     0.25751748127597     0.30929011371007
+   13     0.00000000000000     0.00672265993017     0.08404666219282     0.17502801607200     0.22425797066285
+   14     0.00000000000000     0.00116166911619     0.03660738854453     0.09971543072302     0.13989438209625
+   15     0.00000000000000     0.00007929393416     0.01019365482923     0.04176922069681     0.06726812573464
+
+
+
+
+*** PSI4 exiting successfully. Buy a developer a beer!

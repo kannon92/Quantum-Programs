@@ -5,22 +5,30 @@ sys.path.insert(0, './..')
 import scf
 
 molecule {
-O
-H 1 R
-H 1 R 2 A
-
-R = .9
-A = 104.5
+0 1
+H
+F 1 1.2
+symmetry c1
+units angstrom
 }
 
+
 set {
-  basis sto-3g
+  basis cc-pvdz
+  reference rhf
+  scf_type  pk
 }
 
 set scf {
   print 1
+  DO_FTHF true
+  MAX_ITER 130
+  MAX_TEMP 20000
+  TEMP_INCREMENT 0
+  bisect  true
+  bisect_iter  40
 }
-
+energy('rhf')
 energy('scf')
 
 scf.exampleFN()
