@@ -43,6 +43,7 @@ int read_options(std::string name, Options& options)
         /*- The amount of information printed to the output file -*/
         options.add_int("PRINT", 1);
         options.add_str("INTEGRALS", "CONV", "DF CHOL CONV");
+        options.add_double("LAPLACE_TOLERANCE", 1e-6);
     }
 
     return true;
@@ -54,7 +55,7 @@ PsiReturnType aomp2(Options& options)
     int print = options.get_int("PRINT");
 
     boost::shared_ptr<ao_class> aoclass
-        (new ao_class());
+        (new ao_class(Process::environment.wavefunction(), options));
     aoclass->compute_mp2();
     /* Your code goes here */
 
