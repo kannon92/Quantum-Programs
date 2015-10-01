@@ -11,26 +11,34 @@ class ao_class : public Wavefunction
 {
 private:
     //The matrix containing ( pq | rs) integrals (not antisymmetrized)
+    boost::shared_ptr<Matrix> Full_MO_Ints_;
+    //The matrix containing (uv | ls ) integrals
     boost::shared_ptr<Matrix> Full_AO_Ints_;
     //The matrix containing the laplace factors for occupied orbitals
     boost::shared_ptr<Matrix> Laplace_occ_;
     //The matrix containing the laplace factors for virtual orbitals
     boost::shared_ptr<Matrix> Laplace_vir_;
+    std::map<std::string, boost::shared_ptr<Matrix> > SchwartzScreen_;
+    void SchwartzScreen();
+
+
+
+    size_t weights_;
     //The occupied psudodensity matrix
     //P_{/mu /nu} = \omega \sum_i^occ CCe^{-\epsilon_i t}
-    boost::shared_ptr<Matrix> PsuedoDOcc_;
+    boost::shared_ptr<Matrix> POcc_;
     //P_{/mu /nu} = \omega \sum_a^virt CCe^{-\epsilon_i t}
-    boost::shared_ptr<Matrix> PsuedoDVir_;
+    boost::shared_ptr<Matrix> PVir_;
     //The AO->MO coefficient matrix.  Get from SCF 
     boost::shared_ptr<Matrix>  AOMO_;
     //The wavefunction to get init stuff
     boost::shared_ptr<Wavefunction> wavefunction_;
     //size of occupied orbitals
-    int naocc_;
+    size_t naocc_;
     //size of virtual orbitals
-    int navir_;
+    size_t navir_;
     //size of nmo
-    int nmo_;
+    size_t nmo_;
     
     //Compute the psuedo matrices
     void compute_psuedo();
@@ -40,6 +48,8 @@ private:
     double compute_mp2_no_approx();
     double compute_mp2_laplace_denom();
     double compute_ao_mp2();
+    double compute_mp2_ao_laplace();
+    
 
 
 public:
@@ -52,12 +62,15 @@ public:
 class conventional_integrals 
 {
 private:
-    boost::shared_ptr<Matrix> integrals_;
+    boost::shared_ptr<Matrix> ao_integrals_;
+    boost::shared_ptr<Matrix> mo_integrals_;
     
 public:
     conventional_integrals();
-    boost::shared_ptr<Matrix> return_integrals()
-    {return integrals_;}
+    boost::shared_ptr<Matrix> ao_integrals()
+    {return ao_integrals_;}
+    boost::shared_ptr<Matrix> mo_integrals()
+    {return mo_integrals_;}
 };
 
 class df_integrals
