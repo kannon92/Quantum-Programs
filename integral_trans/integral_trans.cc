@@ -81,6 +81,7 @@ integral_trans(Options &options)
     // Use the IntegralTransform object's DPD instance, for convenience
     dpd_set_default(ints.get_dpd_id());
 
+    SharedMatrix TEI_PSI4(new Matrix("TEI", wfn->nmo() * wfn->nmo(), wfn->nmo() * wfn->nmo()));
     /*
      * Now, loop over the DPD buffer, printing the integrals
      */
@@ -115,12 +116,15 @@ integral_trans(Options &options)
                                  p, q, r, s, K.matrix[h][pq][rs], 
                                  psym, qsym, rsym, ssym, 
                                  prel, qrel, rrel, srel);
+                TEI_PSI4->set(pq, rs, K.matrix[h][pq][rs]);
             }
         }
         global_dpd_->buf4_mat_irrep_close(&K, h);
     }
     global_dpd_->buf4_close(&K);
     psio->close(PSIF_LIBTRANS_DPD, PSIO_OPEN_OLD);
+
+    outfile->Printf("\n TEI_PSI4: %8.8f", TEI_PSI4->rms());
 
     /// Do the MO transform using JK builders
 
@@ -129,7 +133,7 @@ integral_trans(Options &options)
     int nmo = wfn->nmo();
     SharedMatrix Identity(new Matrix("I", nmo, nmo));
     Identity->identity();
-    C->get_column(0, 1)->print();
+
     std::vector<SharedMatrix> J_pq;
     SharedMatrix TEI_MO(new Matrix("TEI_MO", nmo * nmo, nmo * nmo));
     for(int i = 0; i < nmo; i++){
@@ -163,7 +167,7 @@ integral_trans(Options &options)
             }
         }
     }
-    TEI_MO->print();
+    outfile->Printf("\n\n TEI_MO norm: %8.8f", TEI_MO->rms());
 
 
     return Success;
