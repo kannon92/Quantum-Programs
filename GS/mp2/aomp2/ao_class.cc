@@ -62,7 +62,7 @@ double ao_class::compute_mp2_no_approx()
                        double iajb = Full_MO_Ints_->get(i*nbf + (a + naocc_), j*nbf + (b + naocc_));
                        double ibja = Full_MO_Ints_->get(i*nbf + (b + naocc_), j*nbf + (a + naocc_));
                        if(iajb < 1e-10 or ibja < 1e-10)
-                        count++;
+                            count++;
                        double denom = -1.0 / (eps_vir->get(a) + eps_vir->get(b) - eps_occ->get(i) - eps_occ->get(j));
                        MP2_energy+= 2.0*(iajb*iajb)*denom - iajb*ibja*denom;
              }
@@ -144,8 +144,8 @@ void ao_class::compute_psuedo()
 double ao_class::compute_mp2_ao_laplace()
 {
     ambit::Tensor TransAO = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
-    ambit::Tensor BAO = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
-    ambit::Tensor CAO = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
+    ambit::Tensor BAO = ambit::Tensor::build(ambit::CoreTensor, "BTransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
+    ambit::Tensor CAO = ambit::Tensor::build(ambit::CoreTensor, "CTransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
     ambit::Tensor POcc    = ambit::Tensor::build(ambit::CoreTensor, "Pocc", {weights_, nmo_, nmo_});
     ambit::Tensor PVir    = ambit::Tensor::build(ambit::CoreTensor, "Pocc", {weights_, nmo_, nmo_});
     ambit::Tensor AOFull = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {nmo_, nmo_, nmo_, nmo_});
@@ -160,7 +160,7 @@ double ao_class::compute_mp2_ao_laplace()
 
     TransAO("w, mu, nu, lam, si") = POcc("w, mu, gam") * PVir("w, nu, del") * AOFull("gam, del, kap, eps") * POcc("w, kap, lam") * PVir("w, eps, si");
     BAO("w, mu, nu, lam, si") = POcc("w, mu, gam") * AOFull("gam, nu, kap, si") * POcc("w, kap, lam");
-    CAO("w, mu, nu, lam, si") = PVir("w, nu, gam") * AOFull("mu, gam, kap, lam") * PVir("w, si, lam");
+    CAO("w, mu, nu, kap, si") = PVir("w, nu, gam") * AOFull("mu, gam, kap, lam") * PVir("w, lam, si");
 
     ambit::Tensor E = ambit::Tensor::build(ambit::CoreTensor, "EAlpha", {weights_});
     ambit::Tensor AOFullV = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {nmo_, nmo_, nmo_, nmo_});
@@ -174,51 +174,91 @@ double ao_class::compute_mp2_ao_laplace()
     TransAO.iterate([&](const std::vector<size_t>& i,double& value){
         if(value < 1e-10) count++;});
 
-    outfile->Printf("\n Number of nonzero in AO-MP2 %d", count);
+    outfile->Printf("\n Number of zero in AO-MP2 %d", count);
 
     SharedMatrix A_screen(new Matrix("(uv|uv)", nmo_, nmo_));
-    SharedMatrix B_screen(new Matrix("(uv|uv", weights_ * nmo_, nmo_));
-    SharedMatrix C_screen(new Matrix("(uvb|uvb)", weights_ * nmo_, nmo_));
+    SharedMatrix B_screen(new Matrix("(u_bv|u_bv)", weights_ * nmo_, nmo_));
+    SharedMatrix C_screen(new Matrix("(uv_b|uv_b)", weights_ * nmo_, nmo_));
     SharedMatrix D_screen(new Matrix("D", weights_ * nmo_ , nmo_));
 
     
     std::vector<double>& B_vec = BAO.data();
     std::vector<double>& C_vec = CAO.data();
+    SharedMatrix BV(new Matrix("B * PV", weights_ * nmo_, nmo_));
+    SharedMatrix CO(new Matrix("C * PO", weights_ * nmo_, nmo_));
     for(int mu = 0; mu < nmo_; mu++){
         for(int nu = 0; nu < nmo_; nu++){
-            A_screen->set(mu, nu, std::sqrt(std::fabs(Full_AO_Ints_->get(mu * nmo_ + mu, nu * nmo_ + nu))));
+            A_screen->set(mu, nu, sqrt(fabs(Full_AO_Ints_->get(mu * nmo_ + nu, mu * nmo_ + nu))));
             for(int w = 0; w < weights_; w++){
                 B_screen->set(w * nmo_ + mu, nu, sqrt(fabs(B_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_ + nu]))); 
-                C_screen->set(w * nmo_ + mu, nu, sqrt(fabs(C_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_+ + nu]))); 
+                C_screen->set(w * nmo_ + mu, nu, sqrt(fabs(C_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_ + nu]))); 
                 double valueB, valueC;
                 valueB = 0.0;
                 valueC = 0.0;
                 for(int sig = 0; sig < nmo_; sig++) 
                 {
-                    valueB += B_screen->get(mu, sig) * PVir_->get(w * nmo_ + sig, nu);
-                    valueC += C_screen->get(mu, sig) * POcc_->get(w * nmo_ + sig, nu);
-               }
-               double value_min = 0.0;
-               if(valueB < valueC)
-                   value_min = valueB;
-               else 
-                   value_min = valueC;
-               value_min = valueB < valueC ? valueB : valueC;
-               D_screen->set(mu, nu, value_min);
+                    valueB += B_screen->get(w * nmo_ + mu, sig) * fabs(PVir_->get(w, sig * nmo_ + nu));
+                    valueC += C_screen->get(w * nmo_ + mu, sig) * fabs(POcc_->get(w, sig * nmo_ + nu));
+                }
+                BV->set(w * nmo_ + mu, nu, valueB);
+                CO->set(w * nmo_ + mu, nu, valueC);
+                double value_min = 0.0;
+                //if(valueB < valueC)
+                //    value_min = valueB;
+                //else 
+                //    value_min = valueC;
+                //D_screen->set(w * nmo_ + mu, nu, value_min);
 
             }
         }
     }
+    if(BV->rms() < CO->rms())
+        D_screen = BV;
+    else 
+        D_screen = CO;
     A_screen->print();
     B_screen->print();
     C_screen->print();
     D_screen->print();
+    //POcc_->print();
+    //PVir_->print();
+
+    double screen_energy = 0.0;
+    int count_screen = 0;
+    for(int mu = 0; mu < nmo_; mu++) {
+        for(int nu = 0; nu < nmo_; nu++) {
+            if(A_screen->get(mu, nu) > 1e-10)
+            {
+                for(int rho = 0; rho < nmo_; rho++) {
+                    for(int sig = 0; sig < nmo_; sig++) {
+                        if(A_screen->get(rho, sig) > 1e-10)
+                        {
+                            for(int w = 0; w < weights_; w++) {
+
+                                if(D_screen->get(w * nmo_ + mu, nu) * D_screen->get(w * nmo_ + rho , sig) > 1e-10)
+                                {
+                                    double value_w = TransAO.data()[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + rho * nmo_ + sig];
+                                    double value_ao = AOFullV.data()[mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + rho * nmo_ + sig];
+                                    screen_energy += -1 * value_w * value_ao;
+
+                                    count_screen++;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    outfile->Printf("\n Skipped %d out of %d", -1 * count_screen + weights_ * nmo_ * nmo_ * nmo_ * nmo_, weights_ * nmo_ * nmo_ * nmo_ * nmo_);
 
 
     double mp2_ao = 0.0;
 
     for(int w = 0; w < weights_; w++)
     { mp2_ao += -1 * E.data()[w];}
+    outfile->Printf("\n screen_energy: %8.8f mp2_ao: %8.8f", screen_energy, mp2_ao);
 
 return mp2_ao;
 
