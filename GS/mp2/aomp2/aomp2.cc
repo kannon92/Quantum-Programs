@@ -50,16 +50,16 @@ int read_options(std::string name, Options& options)
 }
 
 extern "C" 
-PsiReturnType aomp2(Options& options)
+SharedWavefunction aomp2(SharedWavefunction ref_wfn, Options& options)
 {
     int print = options.get_int("PRINT");
 
     boost::shared_ptr<ao_class> aoclass
-        (new ao_class(Process::environment.wavefunction(), options));
+        (new ao_class(ref_wfn, options));
     aoclass->compute_mp2();
     /* Your code goes here */
 
-    return Success;
+    return ref_wfn;
 }
 
 }} // End namespaces

@@ -8,11 +8,12 @@
 
 namespace psi{namespace aomp2 {
 
-ao_class::ao_class(boost::shared_ptr<Wavefunction> wavefunction_, Options& options) 
-    : Wavefunction(options, _default_psio_lib_)
+ao_class::ao_class(SharedWavefunction wavefunction, Options& options) 
+    : wavefunction_(wavefunction), options_(options)
 {
+    
     boost::shared_ptr<Molecule> molecule = Process::environment.molecule();
-    ambit::initialize();
+    //ambit::initialize();
      
     common_init();
 
@@ -20,22 +21,20 @@ ao_class::ao_class(boost::shared_ptr<Wavefunction> wavefunction_, Options& optio
 void ao_class::common_init()
 {
     
-    boost::shared_ptr<Wavefunction> wfn = Process::environment.wavefunction();
-    boost::shared_ptr<Matrix> AOMO = wfn->Ca_subset("AO", "ALL");
+    boost::shared_ptr<Matrix> AOMO = wavefunction_->Ca_subset("AO", "ALL");
     
     AOMO_ = AOMO;
-    nmo_ = wfn->nmo();
+    nmo_ = wavefunction_->nmo();
 
 }
 void ao_class::compute_mp2()
 {
-    boost::shared_ptr<Wavefunction> wfn = Process::environment.wavefunction();
     get_laplace_factors();
     compute_psuedo();
    
     if(options_.get_str("INTEGRALS")=="CONV")
     {
-        boost::shared_ptr<conventional_integrals> conv_ints(new conventional_integrals());
+        boost::shared_ptr<conventional_integrals> conv_ints(new conventional_integrals(wavefunction_));
         Full_MO_Ints_ = conv_ints->mo_integrals();
         Full_AO_Ints_ = conv_ints->ao_integrals();
     }
@@ -48,31 +47,34 @@ void ao_class::compute_mp2()
 }
 double ao_class::compute_mp2_no_approx()
 {
-    boost::shared_ptr<Wavefunction> wfn = Process::environment.wavefunction();
-    boost::shared_ptr<Vector> eps_occ = wfn->epsilon_a_subset("AO", "OCC");
-    boost::shared_ptr<Vector> eps_vir = wfn->epsilon_a_subset("AO", "VIR");
+    boost::shared_ptr<Vector> eps_occ = wavefunction_->epsilon_a_subset("AO", "OCC");
+    boost::shared_ptr<Vector> eps_vir = wavefunction_->epsilon_a_subset("AO", "VIR");
     int nbf = naocc_ + navir_;
     outfile->Printf("\n naocc_:%d navir_:%d", naocc_, navir_);
     double MP2_energy = 0.0;
+    int count = 0;
     for(size_t i = 0; i < naocc_; i++){
        for(size_t j = 0; j < naocc_; j++){
           for(size_t a = 0; a < navir_; a++){
              for(size_t b = 0; b < navir_; b++){
                        double iajb = Full_MO_Ints_->get(i*nbf + (a + naocc_), j*nbf + (b + naocc_));
                        double ibja = Full_MO_Ints_->get(i*nbf + (b + naocc_), j*nbf + (a + naocc_));
+                       if(iajb < 1e-10 or ibja < 1e-10)
+                        count++;
                        double denom = -1.0 / (eps_vir->get(a) + eps_vir->get(b) - eps_occ->get(i) - eps_occ->get(j));
                        MP2_energy+= 2.0*(iajb*iajb)*denom - iajb*ibja*denom;
              }
           }
        }
     }
+
+    outfile->Printf("\n Number of nonzero in MP2 %d", count);
     return MP2_energy;
 }
 double ao_class::compute_mp2_laplace_denom()
 {
-    boost::shared_ptr<Wavefunction> wfn = Process::environment.wavefunction();
-    boost::shared_ptr<Vector> eps_occ = wfn->epsilon_a_subset("AO", "OCC");
-    boost::shared_ptr<Vector> eps_vir = wfn->epsilon_a_subset("AO", "VIR");
+    boost::shared_ptr<Vector> eps_occ = wavefunction_->epsilon_a_subset("AO", "OCC");
+    boost::shared_ptr<Vector> eps_vir = wavefunction_->epsilon_a_subset("AO", "VIR");
     int nbf = naocc_ + navir_;
     outfile->Printf("\n naocc_:%d navir_:%d", naocc_, navir_);
     double MP2_energy = 0.0;
@@ -96,7 +98,6 @@ double ao_class::compute_mp2_laplace_denom()
 }
 void ao_class::get_laplace_factors()
 {
-    boost::shared_ptr<Wavefunction> wavefunction_ = Process::environment.wavefunction();
     boost::shared_ptr<Vector> eps_occ = wavefunction_->epsilon_a_subset("AO", "OCC");
     boost::shared_ptr<Vector> eps_vir = wavefunction_->epsilon_a_subset("AO", "VIR");
     naocc_ = eps_occ->dim();
@@ -140,10 +141,10 @@ void ao_class::compute_psuedo()
 }
 double ao_class::compute_mp2_ao_laplace()
 {
-    ambit::Tensor TransAO = ambit::Tensor::build(ambit::kCore, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
-    ambit::Tensor POcc    = ambit::Tensor::build(ambit::kCore, "Pocc", {weights_, nmo_, nmo_});
-    ambit::Tensor PVir    = ambit::Tensor::build(ambit::kCore, "Pocc", {weights_, nmo_, nmo_});
-    ambit::Tensor AOFull = ambit::Tensor::build(ambit::kCore, "TransAO", {nmo_, nmo_, nmo_, nmo_});
+    ambit::Tensor TransAO = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
+    ambit::Tensor POcc    = ambit::Tensor::build(ambit::CoreTensor, "Pocc", {weights_, nmo_, nmo_});
+    ambit::Tensor PVir    = ambit::Tensor::build(ambit::CoreTensor, "Pocc", {weights_, nmo_, nmo_});
+    ambit::Tensor AOFull = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {nmo_, nmo_, nmo_, nmo_});
 
     AOFull.iterate([&](const std::vector<size_t>& i,double& value){
         value = Full_AO_Ints_->get(i[0] * nmo_ + i[1], i[2] * nmo_ + i[3]);});
@@ -155,15 +156,32 @@ double ao_class::compute_mp2_ao_laplace()
 
     TransAO("w, mu, nu, lam, si") = POcc("w, mu, gam") * PVir("w, nu, del") * AOFull("gam, del, kap, eps") * POcc("w, kap, lam") * PVir("w, eps, si");
 
-    ambit::Tensor E = ambit::Tensor::build(ambit::kCore, "EAlpha", {weights_});
-    E("w") = TransAO("w, mu, nu, la, si") * (2 * AOFull("mu, nu, la, si"));
-    E("w") -= TransAO("w, mu, nu, la, si") * AOFull("mu, si, la, nu");
-    E.print(stdout);
+    ambit::Tensor E = ambit::Tensor::build(ambit::CoreTensor, "EAlpha", {weights_});
+    ambit::Tensor AOFullV = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {nmo_, nmo_, nmo_, nmo_});
+    AOFullV("mu, nu, la, si") = 2.0 * AOFull("mu, nu, la, si");
+    AOFullV("mu, nu, la, si") -= AOFull("mu, si, la, nu");
+    //E("w") = TransAO("w, mu, nu, la, si") * (2 * AOFull("mu, nu, la, si"));
+    //E("w") -= TransAO("w, mu, nu, la, si") * AOFull("mu, si, la, nu");
+    E("w") = TransAO("w, mu, nu, la, si") * (AOFullV("mu, nu, la, si"));
+    //E.print(stdout);
+    int count = 0;
+    TransAO.iterate([&](const std::vector<size_t>& i,double& value){
+        if(value < 1e-10) count++;});
+
+    outfile->Printf("\n Number of nonzero in AO-MP2 %d", count);
+
 
     double mp2_ao = 0.0;
 
     for(int w = 0; w < weights_; w++)
     { mp2_ao += -1 * E.data()[w];}
+    ///Stupid algorithm for AO-MP2
+    for(int mu = 0; mu < nbf; mu++)
+        for(int nu = 0; nu < nbf; nu++)
+            for(int
+
+    ///Stupid algorithm but use screenings.
+
 
 
 return mp2_ao;
@@ -177,13 +195,13 @@ void SchwartzScreen()
 }
 
 
-conventional_integrals::conventional_integrals()
+conventional_integrals::conventional_integrals(SharedWavefunction ref_wfn)
+: wavefunction_(ref_wfn)
 {
-    boost::shared_ptr<MintsHelper> Mints(new MintsHelper());
-    boost::shared_ptr<Wavefunction> wavefunction_ = Process::environment.wavefunction();
+    MintsHelper Mints(wavefunction_);
     boost::shared_ptr<Matrix> AOMO = wavefunction_->Ca_subset("AO", "ALL");
-    mo_integrals_ = Mints->mo_eri(AOMO,AOMO);
-    ao_integrals_ = Mints->ao_eri();
+    mo_integrals_ = Mints.mo_eri(AOMO,AOMO);
+    ao_integrals_ = Mints.ao_eri();
 }
 
 }}

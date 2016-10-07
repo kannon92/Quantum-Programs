@@ -7,7 +7,7 @@
 
 namespace psi { namespace aomp2 {
 
-class ao_class : public Wavefunction
+class ao_class 
 {
 private:
     //The matrix containing ( pq | rs) integrals (not antisymmetrized)
@@ -19,10 +19,8 @@ private:
     //The matrix containing the laplace factors for virtual orbitals
     boost::shared_ptr<Matrix> Laplace_vir_;
     std::map<std::string, boost::shared_ptr<Matrix> > SchwartzScreen_;
+    Options options_;
     void SchwartzScreen();
-
-
-
     size_t weights_;
     //The occupied psudodensity matrix
     //P_{/mu /nu} = \omega \sum_i^occ CCe^{-\epsilon_i t}
@@ -53,7 +51,7 @@ private:
 
 
 public:
-    ao_class(boost::shared_ptr<Wavefunction> WFN, Options &options);
+    ao_class(SharedWavefunction ref_wfn, Options &options);
     void common_init();
     void compute_mp2();
 
@@ -66,11 +64,12 @@ private:
     boost::shared_ptr<Matrix> mo_integrals_;
     
 public:
-    conventional_integrals();
+    conventional_integrals(SharedWavefunction ref_wfn);
     boost::shared_ptr<Matrix> ao_integrals()
     {return ao_integrals_;}
     boost::shared_ptr<Matrix> mo_integrals()
     {return mo_integrals_;}
+    SharedWavefunction wavefunction_;
 };
 
 class df_integrals
@@ -88,6 +87,12 @@ private:
     boost::shared_ptr<Matrix> L_;
 public:
     cholesky_integrals();
+};
+class AOScwartz
+{
+private:
+
+public:
 };
 
 }}
