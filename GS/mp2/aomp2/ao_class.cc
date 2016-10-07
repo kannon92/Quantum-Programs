@@ -5,6 +5,8 @@
 #include <lib3index/denominator.h>
 #include <libpsio/psio.h>
 #include <ambit/tensor.h>
+//#include <ctf.hpp>
+//#include <mpi.h>
 
 namespace psi{namespace aomp2 {
 
@@ -142,6 +144,8 @@ void ao_class::compute_psuedo()
 double ao_class::compute_mp2_ao_laplace()
 {
     ambit::Tensor TransAO = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
+    ambit::Tensor BAO = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
+    ambit::Tensor CAO = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {weights_, nmo_, nmo_, nmo_, nmo_});
     ambit::Tensor POcc    = ambit::Tensor::build(ambit::CoreTensor, "Pocc", {weights_, nmo_, nmo_});
     ambit::Tensor PVir    = ambit::Tensor::build(ambit::CoreTensor, "Pocc", {weights_, nmo_, nmo_});
     ambit::Tensor AOFull = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {nmo_, nmo_, nmo_, nmo_});
@@ -155,6 +159,8 @@ double ao_class::compute_mp2_ao_laplace()
         value = PVir_->get(i[0], i[1] * nmo_ + i[2]);});
 
     TransAO("w, mu, nu, lam, si") = POcc("w, mu, gam") * PVir("w, nu, del") * AOFull("gam, del, kap, eps") * POcc("w, kap, lam") * PVir("w, eps, si");
+    BAO("w, mu, nu, lam, si") = POcc("w, mu, gam") * AOFull("gam, nu, kap, si") * POcc("w, kap, lam");
+    CAO("w, mu, nu, lam, si") = PVir("w, nu, gam") * AOFull("mu, gam, kap, lam") * PVir("w, si, lam");
 
     ambit::Tensor E = ambit::Tensor::build(ambit::CoreTensor, "EAlpha", {weights_});
     ambit::Tensor AOFullV = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {nmo_, nmo_, nmo_, nmo_});
@@ -170,19 +176,49 @@ double ao_class::compute_mp2_ao_laplace()
 
     outfile->Printf("\n Number of nonzero in AO-MP2 %d", count);
 
+    SharedMatrix A_screen(new Matrix("(uv|uv)", nmo_, nmo_));
+    SharedMatrix B_screen(new Matrix("(uv|uv", weights_ * nmo_, nmo_));
+    SharedMatrix C_screen(new Matrix("(uvb|uvb)", weights_ * nmo_, nmo_));
+    SharedMatrix D_screen(new Matrix("D", weights_ * nmo_ , nmo_));
+
+    
+    std::vector<double>& B_vec = BAO.data();
+    std::vector<double>& C_vec = CAO.data();
+    for(int mu = 0; mu < nmo_; mu++){
+        for(int nu = 0; nu < nmo_; nu++){
+            A_screen->set(mu, nu, std::sqrt(std::fabs(Full_AO_Ints_->get(mu * nmo_ + mu, nu * nmo_ + nu))));
+            for(int w = 0; w < weights_; w++){
+                B_screen->set(w * nmo_ + mu, nu, sqrt(fabs(B_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_ + nu]))); 
+                C_screen->set(w * nmo_ + mu, nu, sqrt(fabs(C_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_+ + nu]))); 
+                double valueB, valueC;
+                valueB = 0.0;
+                valueC = 0.0;
+                for(int sig = 0; sig < nmo_; sig++) 
+                {
+                    valueB += B_screen->get(mu, sig) * PVir_->get(w * nmo_ + sig, nu);
+                    valueC += C_screen->get(mu, sig) * POcc_->get(w * nmo_ + sig, nu);
+               }
+               double value_min = 0.0;
+               if(valueB < valueC)
+                   value_min = valueB;
+               else 
+                   value_min = valueC;
+               value_min = valueB < valueC ? valueB : valueC;
+               D_screen->set(mu, nu, value_min);
+
+            }
+        }
+    }
+    A_screen->print();
+    B_screen->print();
+    C_screen->print();
+    D_screen->print();
+
 
     double mp2_ao = 0.0;
 
     for(int w = 0; w < weights_; w++)
     { mp2_ao += -1 * E.data()[w];}
-    ///Stupid algorithm for AO-MP2
-    for(int mu = 0; mu < nbf; mu++)
-        for(int nu = 0; nu < nbf; nu++)
-            for(int
-
-    ///Stupid algorithm but use screenings.
-
-
 
 return mp2_ao;
 
