@@ -28,12 +28,14 @@ import os
 import inputparser
 import math
 import warnings
-from driver import *
-from wrappers import *
+import driver 
 from molutil import *
 import p4util
-from p4xcpt import *
+from p4util.exceptions import *
+import procedures
+from procedures.proc import *
 
+plugdir = os.path.split(os.path.abspath(__file__))[0]
 
 def run_aomp2(name, **kwargs):
     r"""Function encoding sequence of PSI module and plugin calls so that
@@ -45,15 +47,20 @@ def run_aomp2(name, **kwargs):
     lowername = name.lower()
     kwargs = p4util.kwargs_lower(kwargs)
 
-    # Your plugin's psi4 run sequence goes here
-    psi4.set_local_option('AOMP2', 'PRINT', 1)
-    scf_helper(name, **kwargs)
-    returnvalue = psi4.plugin('aomp2.so')
-    psi4.set_variable('CURRENT ENERGY', returnvalue)
+    ref_wfn = kwargs.get('ref_wfn', None)
+    if ref_wfn is None:
+        ref_wfn = driver.scf_helper(name, **kwargs)
 
+    # Your plugin's psi4 run sequence goes here
+    #psi4.set_local_option('AOMP2', 'PRINT', 1)
+    #scf_helper(name, **kwargs)
+    returnvalue = psi4.plugin("aomp2.so", ref_wfn)
+    #psi4.set_variable('CURRENT ENERGY', returnvalue)
+
+    return returnvalue
 
 # Integration with driver routines
-procedures['energy']['aomp2'] = run_aomp2
+driver.procedures['energy']['aomp2'] = run_aomp2
 
 
 def exampleFN():
