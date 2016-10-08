@@ -70,7 +70,7 @@ double ao_class::compute_mp2_no_approx()
        }
     }
 
-    outfile->Printf("\n Number of nonzero in MP2 %d", count);
+    outfile->Printf("\n Number of zero in MP2 %d", count);
     return MP2_energy;
 }
 double ao_class::compute_mp2_laplace_denom()
@@ -174,53 +174,57 @@ double ao_class::compute_mp2_ao_laplace()
     TransAO.iterate([&](const std::vector<size_t>& i,double& value){
         if(value < 1e-10) count++;});
 
-    outfile->Printf("\n Number of zero in AO-MP2 %d", count);
+    //outfile->Printf("\n Number of zero in AO-MP2 %d", count);
 
     SharedMatrix A_screen(new Matrix("(uv|uv)", nmo_, nmo_));
-    SharedMatrix B_screen(new Matrix("(u_bv|u_bv)", weights_ * nmo_, nmo_));
-    SharedMatrix C_screen(new Matrix("(uv_b|uv_b)", weights_ * nmo_, nmo_));
-    SharedMatrix D_screen(new Matrix("D", weights_ * nmo_ , nmo_));
+    SharedMatrix B_screen(new Matrix("(u_bv|u_bv)", weights_ , nmo_ * nmo_));
+    SharedMatrix C_screen(new Matrix("(uv_b|uv_b)", weights_ , nmo_ * nmo_));
+    SharedMatrix D_screen(new Matrix("D", weights_ , nmo_ * nmo_));
 
     
     std::vector<double>& B_vec = BAO.data();
     std::vector<double>& C_vec = CAO.data();
-    SharedMatrix BV(new Matrix("B * PV", weights_ * nmo_, nmo_));
-    SharedMatrix CO(new Matrix("C * PO", weights_ * nmo_, nmo_));
+    SharedMatrix BV(new Matrix("B * PV", weights_ , nmo_ * nmo_));
+    SharedMatrix CO(new Matrix("C * PO", weights_ , nmo_ * nmo_));
     for(int mu = 0; mu < nmo_; mu++){
         for(int nu = 0; nu < nmo_; nu++){
             A_screen->set(mu, nu, sqrt(fabs(Full_AO_Ints_->get(mu * nmo_ + nu, mu * nmo_ + nu))));
             for(int w = 0; w < weights_; w++){
-                B_screen->set(w * nmo_ + mu, nu, sqrt(fabs(B_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_ + nu]))); 
-                C_screen->set(w * nmo_ + mu, nu, sqrt(fabs(C_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_ + nu]))); 
+                B_screen->set(w, mu * nmo_ + nu, sqrt(fabs(B_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_ + nu]))); 
+                C_screen->set(w, mu * nmo_ + nu, sqrt(fabs(C_vec[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + mu * nmo_ + nu]))); 
                 double valueB, valueC;
                 valueB = 0.0;
                 valueC = 0.0;
                 for(int sig = 0; sig < nmo_; sig++) 
                 {
-                    valueB += B_screen->get(w * nmo_ + mu, sig) * fabs(PVir_->get(w, sig * nmo_ + nu));
-                    valueC += C_screen->get(w * nmo_ + mu, sig) * fabs(POcc_->get(w, sig * nmo_ + nu));
+                    valueB += B_screen->get(w , mu * nmo_ + sig) * fabs(PVir_->get(w, sig * nmo_ + nu));
+                    valueC += C_screen->get(w , mu * nmo_ + sig) * fabs(POcc_->get(w, sig * nmo_ + nu));
                 }
-                BV->set(w * nmo_ + mu, nu, valueB);
-                CO->set(w * nmo_ + mu, nu, valueC);
+                BV->set(w ,mu * nmo_ +  nu, valueB);
+                CO->set(w ,mu * nmo_ +  nu, valueC);
                 double value_min = 0.0;
-                //if(valueB < valueC)
-                //    value_min = valueB;
-                //else 
-                //    value_min = valueC;
-                //D_screen->set(w * nmo_ + mu, nu, value_min);
+                if(valueB < valueC)
+                    value_min = valueB;
+                else 
+                    value_min = valueC;
+                D_screen->set(w , mu * nmo_ + nu, value_min);
 
             }
         }
     }
-    if(BV->rms() < CO->rms())
-        D_screen = BV;
-    else 
-        D_screen = CO;
-    A_screen->print();
-    B_screen->print();
+    //if(BV->rms() < CO->rms())
+    //    D_screen = BV;
+    //else 
+    //    D_screen = CO;
+    //A_screen->print();
+    D_screen = BV;
+    //B_screen->print();
+    //D_screen->print();
+    //BV->print();
     C_screen->print();
-    D_screen->print();
-    //POcc_->print();
+    POcc_->set_name("C_occ C_occ^T exp(shit)");
+    POcc_->print();
+    CO->print();
     //PVir_->print();
 
     double screen_energy = 0.0;
@@ -235,7 +239,7 @@ double ao_class::compute_mp2_ao_laplace()
                         {
                             for(int w = 0; w < weights_; w++) {
 
-                                if(D_screen->get(w * nmo_ + mu, nu) * D_screen->get(w * nmo_ + rho , sig) > 1e-10)
+                                if(D_screen->get(w, mu * nmo_ +  nu) * D_screen->get(w , rho * nmo_ + sig) > 1e-10)
                                 {
                                     double value_w = TransAO.data()[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + rho * nmo_ + sig];
                                     double value_ao = AOFullV.data()[mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + rho * nmo_ + sig];
@@ -266,8 +270,6 @@ return mp2_ao;
 void SchwartzScreen()
 {
    outfile->Printf("Going to do something shortly"); 
-
-    
 }
 
 
