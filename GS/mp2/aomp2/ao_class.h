@@ -47,9 +47,7 @@ private:
     double compute_mp2_laplace_denom();
     double compute_ao_mp2();
     double compute_mp2_ao_laplace();
-    
-
-
+    void test_atomic_orbital_class();
 public:
     ao_class(SharedWavefunction ref_wfn, Options &options);
     void common_init();

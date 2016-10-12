@@ -5,6 +5,7 @@
 #include <lib3index/denominator.h>
 #include <libpsio/psio.h>
 #include <ambit/tensor.h>
+#include "ao_helper.h"
 //#include <ctf.hpp>
 //#include <mpi.h>
 
@@ -112,6 +113,22 @@ void ao_class::get_laplace_factors()
     Laplace_vir_ = laplace->denominator_vir();
     weights_ = Laplace_occ_->rowspi()[0];
 
+
+
+}
+void ao_class::test_atomic_orbital_class()
+{
+    boost::shared_ptr<Vector> eps_occ = wavefunction_->epsilon_a_subset("AO", "OCC");
+    boost::shared_ptr<Vector> eps_vir = wavefunction_->epsilon_a_subset("AO", "VIR");
+    AtomicOrbitalHelper ao_helper(AOMO_, eps_occ, eps_vir, 1e-10);
+    boost::shared_ptr<BasisSet> primary = wavefunction_->basisset();
+    boost::shared_ptr<BasisSet> auxiliary = BasisSet::pyconstruct_orbital(primary->molecule(), "DF_BASIS_MP2", options_.get_str("DF_BASIS_MP2"));
+    ao_helper.Compute_AO_Screen(primary);
+    SharedMatrix AO_Screen = ao_helper.AO_Screen();
+    ao_helper.Estimate_TransAO_Screen(primary, auxiliary);
+    SharedMatrix TransAO_Screen = ao_helper.TransAO_Screen();
+    AO_Screen->print();
+    TransAO_Screen->print();
 }
 
 void ao_class::compute_psuedo()
@@ -166,6 +183,13 @@ double ao_class::compute_mp2_ao_laplace()
     ambit::Tensor AOFullV = ambit::Tensor::build(ambit::CoreTensor, "TransAO", {nmo_, nmo_, nmo_, nmo_});
     AOFullV("mu, nu, la, si") = 2.0 * AOFull("mu, nu, la, si");
     AOFullV("mu, nu, la, si") -= AOFull("mu, si, la, nu");
+    SharedMatrix AOFullV_screen(new Matrix("AOV", nmo_, nmo_));
+    AOFullV.iterate([&](const std::vector<size_t>& i,double& value){
+        if(i[0] == i[2] and i[1] == i[3])
+        {
+        AOFullV_screen->set(i[0], i[1],value);
+        }
+        });
     //E("w") = TransAO("w, mu, nu, la, si") * (2 * AOFull("mu, nu, la, si"));
     //E("w") -= TransAO("w, mu, nu, la, si") * AOFull("mu, si, la, nu");
     E("w") = TransAO("w, mu, nu, la, si") * (AOFullV("mu, nu, la, si"));
@@ -186,6 +210,8 @@ double ao_class::compute_mp2_ao_laplace()
     std::vector<double>& C_vec = CAO.data();
     SharedMatrix BV(new Matrix("B * PV", weights_ , nmo_ * nmo_));
     SharedMatrix CO(new Matrix("C * PO", weights_ , nmo_ * nmo_));
+
+
     for(int mu = 0; mu < nmo_; mu++){
         for(int nu = 0; nu < nmo_; nu++){
             A_screen->set(mu, nu, sqrt(fabs(Full_AO_Ints_->get(mu * nmo_ + nu, mu * nmo_ + nu))));
@@ -217,33 +243,50 @@ double ao_class::compute_mp2_ao_laplace()
     //else 
     //    D_screen = CO;
     //A_screen->print();
-    D_screen = BV;
+    //D_screen = BV;
     //B_screen->print();
     //D_screen->print();
     //BV->print();
-    C_screen->print();
-    POcc_->set_name("C_occ C_occ^T exp(shit)");
-    POcc_->print();
-    CO->print();
+    //C_screen->print();
+    //POcc_->set_name("C_occ C_occ^T exp(shit)");
+    //POcc_->print();
+    //CO->print();
     //PVir_->print();
 
+    //A_screen = AOFullV_screen;
+    test_atomic_orbital_class();
+    Full_AO_Ints_->print();
+    AOFullV_screen->print();
+    A_screen->print();
     double screen_energy = 0.0;
     int count_screen = 0;
+    int shoulda_screen = 0;
     for(int mu = 0; mu < nmo_; mu++) {
         for(int nu = 0; nu < nmo_; nu++) {
-            if(A_screen->get(mu, nu) > 1e-10)
+            //if(A_screen->get(mu, nu) > 1e-10)
             {
                 for(int rho = 0; rho < nmo_; rho++) {
                     for(int sig = 0; sig < nmo_; sig++) {
-                        if(A_screen->get(rho, sig) > 1e-10)
+                        //if(A_screen->get(rho, sig) > 1e-10)
                         {
                             for(int w = 0; w < weights_; w++) {
 
-                                if(D_screen->get(w, mu * nmo_ +  nu) * D_screen->get(w , rho * nmo_ + sig) > 1e-10)
+                                //if(D_screen->get(w, mu * nmo_ +  nu) * D_screen->get(w , rho * nmo_ + sig) > 1e-10)
+                                //if(A_screen->get(mu, nu) * A_screen->get(rho, sig) > 1e-10)
                                 {
                                     double value_w = TransAO.data()[w * nmo_ * nmo_ * nmo_ * nmo_ + mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + rho * nmo_ + sig];
                                     double value_ao = AOFullV.data()[mu * nmo_ * nmo_ * nmo_ + nu * nmo_ * nmo_ + rho * nmo_ + sig];
-                                    screen_energy += -1 * value_w * value_ao;
+                                    if(fabs(value_w) < 1e-10 or fabs(value_ao) < 1e-10)
+                                    {
+                                        outfile->Printf("\n mu: %d nu: %d rho: %d sig: %d TransAO: %8.14f value_ao: %8.14f", mu, nu, rho, sig, value_w,
+                                        value_ao);
+                                        shoulda_screen++;
+                                        outfile->Printf("\n A_screen(mu, nu): %8.10f A_screen(rho, sig): %8.10f", A_screen->get(mu,
+                                        nu),A_screen->get(rho, sig));
+                                    }
+                                    else {
+                                        screen_energy += -1 * value_w * value_ao;
+                                    }
 
                                     count_screen++;
                                     
@@ -255,7 +298,8 @@ double ao_class::compute_mp2_ao_laplace()
             }
         }
     }
-    outfile->Printf("\n Skipped %d out of %d", -1 * count_screen + weights_ * nmo_ * nmo_ * nmo_ * nmo_, weights_ * nmo_ * nmo_ * nmo_ * nmo_);
+    outfile->Printf("\n Skipped %d out of %d actual zeros: %d", -1 * count_screen + weights_ * nmo_ * nmo_ * nmo_ * nmo_, weights_ * nmo_ * nmo_
+    * nmo_ * nmo_, shoulda_screen);
 
 
     double mp2_ao = 0.0;
@@ -263,6 +307,9 @@ double ao_class::compute_mp2_ao_laplace()
     for(int w = 0; w < weights_; w++)
     { mp2_ao += -1 * E.data()[w];}
     outfile->Printf("\n screen_energy: %8.8f mp2_ao: %8.8f", screen_energy, mp2_ao);
+    double difference = screen_energy - mp2_ao;
+    //if(fabs(screen_energy - mp2_ao) < 1e-5)
+    //    throw PSIEXCEPTION("AO-MP2 energies do not agree");
 
 return mp2_ao;
 
